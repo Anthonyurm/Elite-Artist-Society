@@ -1,0 +1,672 @@
+<!--
+  ELITE ARTIST SOCIETY  |  Landing Page
+  Built for Anthony Urmetz
+
+  ============================================================
+  THINGS TO WIRE UP BEFORE GOING LIVE
+  ============================================================
+  1. VSL VIDEO: search for  <!-- VSL EMBED -->  and paste your
+     YouTube / Wistia / Vimeo iframe inside the .vsl-frame div.
+  2. TALLY FORM: search for  YOUR_FORM_ID  and replace it with
+     your real Tally form id. The embed loader script is already
+     included at the bottom of the file.
+  3. TESTIMONIALS: the three named cards use real client context
+     as starting copy. Confirm the numbers and swap the photo /
+     video placeholders for real assets before publishing.
+  ============================================================
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Elite Artist Society | Build a fanbase you own</title>
+<meta name="description" content="A six month system for serious independent artists who want to turn attention into owned fans and real income, without chasing virality." />
+<meta name="theme-color" content="#09090b" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+  :root{
+    --bg:#09090b;
+    --surface:#111114;
+    --surface-2:#16161b;
+    --border:rgba(255,255,255,.08);
+    --border-strong:rgba(255,255,255,.16);
+    --text:#f4f4f5;
+    --muted:#a1a1aa;
+    --faint:#71717a;
+    --cobalt:#1E5BFF;
+    --violet:#7C3AED;
+    --mint:#22C55E;
+    --amber:#F59E0B;
+    --display:"Space Grotesk",sans-serif;
+    --body:"Inter",sans-serif;
+    --maxw:1120px;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--body);
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  /* atmosphere: soft glows + grain */
+  body::before{
+    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(60vw 60vw at 78% -8%, rgba(30,91,255,.16), transparent 60%),
+      radial-gradient(55vw 55vw at 6% 8%, rgba(124,58,237,.13), transparent 60%);
+  }
+  body::after{
+    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.045;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .wrap{position:relative;z-index:1;width:100%;max-width:var(--maxw);margin:0 auto;padding:0 22px}
+
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+
+  /* ---------- TYPE ---------- */
+  h1,h2,h3,.eyebrow,.logo,.btn,.stat-num,.step-num{font-family:var(--display)}
+  h1{font-size:clamp(2.1rem,7vw,4rem);line-height:1.04;font-weight:700;letter-spacing:-.02em;text-wrap:balance}
+  h2{font-size:clamp(1.7rem,4.6vw,2.7rem);line-height:1.08;font-weight:600;letter-spacing:-.02em;text-wrap:balance}
+  h3{font-size:1.18rem;font-weight:600;letter-spacing:-.01em}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:9px;
+    font-size:.74rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--cobalt);
+  }
+  .eyebrow::before{content:"";width:26px;height:1px;background:var(--cobalt);opacity:.6}
+  .lead{color:var(--muted);font-size:1.06rem;text-wrap:pretty}
+  .accent{color:var(--cobalt)}
+  .mint{color:var(--mint)} .amber{color:var(--amber)} .violet{color:var(--violet)}
+
+  /* ---------- BUTTONS ---------- */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:9px;
+    font-size:.98rem;font-weight:600;letter-spacing:.01em;
+    padding:15px 26px;border-radius:13px;cursor:pointer;border:1px solid transparent;
+    transition:transform .18s ease,box-shadow .25s ease,background .2s ease;
+    width:100%;
+  }
+  .btn-primary{
+    background:linear-gradient(180deg,#3b71ff,var(--cobalt));
+    color:#fff;box-shadow:0 10px 30px -10px rgba(30,91,255,.7),inset 0 1px 0 rgba(255,255,255,.25);
+  }
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 40px -12px rgba(30,91,255,.85),inset 0 1px 0 rgba(255,255,255,.25)}
+  .btn-ghost{background:transparent;color:var(--text);border-color:var(--border-strong)}
+  .btn-ghost:hover{border-color:var(--text);transform:translateY(-2px)}
+  .btn svg{width:18px;height:18px}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    backdrop-filter:blur(14px);background:rgba(9,9,11,.72);
+    border-bottom:1px solid var(--border);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{font-weight:700;font-size:1.02rem;letter-spacing:.02em;display:flex;align-items:center;gap:10px}
+  .logo .mark{
+    width:30px;height:30px;border-radius:8px;flex:none;
+    background:linear-gradient(140deg,var(--cobalt),var(--violet));
+    display:grid;place-items:center;font-size:.82rem;color:#fff;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.25);
+  }
+  .logo .full{display:none}
+  .nav .btn{width:auto;padding:10px 18px;font-size:.9rem}
+
+  /* ---------- SECTION RHYTHM ---------- */
+  section{padding:74px 0;position:relative}
+  .sec-head{max-width:640px;margin-bottom:42px}
+  .sec-head h2{margin:14px 0}
+  .center{margin-left:auto;margin-right:auto;text-align:center}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:48px 0 56px;text-align:center}
+  .hero-callout{
+    font-family:var(--display);font-weight:600;font-size:.78rem;line-height:1.5;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--cobalt);
+    max-width:34ch;margin:0 auto 18px;
+  }
+  .hero h1{max-width:23ch;margin:0 auto;font-size:clamp(1.85rem,5.2vw,3.15rem);line-height:1.07}
+  .hero h1 em{font-style:normal;color:var(--cobalt)}
+  .hero .lead{max-width:58ch;margin:20px auto 0;font-size:1.06rem}
+  .hero .lead b{color:var(--text);font-weight:600}
+  .hero .lead .mint{font-weight:600}
+  .hero-cta{display:flex;flex-direction:column;gap:12px;max-width:360px;margin:30px auto 0}
+
+  /* Hero testimonial quote */
+  .hero-quote{max-width:620px;margin:34px auto 0;padding:24px 24px;border:1px solid var(--border);
+    border-radius:18px;background:var(--surface);text-align:left}
+  .hero-quote blockquote{font-size:1.02rem;line-height:1.55;color:var(--text)}
+  .hero-quote figcaption{display:flex;align-items:center;gap:13px;margin-top:18px}
+  .hq-avatar{width:50px;height:50px;border-radius:50%;object-fit:cover;border:2px solid var(--border-strong);flex:none}
+  .hq-meta{display:flex;flex-direction:column;line-height:1.3}
+  .hq-meta b{font-family:var(--display);font-weight:600;font-size:.98rem}
+  .hq-meta span{color:var(--faint);font-size:.86rem}
+
+  /* VSL */
+  .vsl{max-width:760px;margin:36px auto 0}
+  .vsl-frame{
+    position:relative;aspect-ratio:16/9;border-radius:18px;overflow:hidden;
+    border:1px solid var(--border-strong);
+    background:
+      radial-gradient(120% 120% at 50% 0%, rgba(30,91,255,.22), transparent 55%),
+      var(--surface-2);
+    box-shadow:0 40px 90px -40px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.02);
+    display:grid;place-items:center;
+  }
+  .vsl-thumb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .vsl-frame .play{
+    position:relative;z-index:2;border:none;cursor:pointer;
+    width:84px;height:84px;border-radius:50%;display:grid;place-items:center;
+    background:rgba(255,255,255,.96);transition:transform .2s ease,box-shadow .25s ease;
+    box-shadow:0 12px 30px -8px rgba(0,0,0,.6);
+  }
+  .vsl-frame:hover .play{transform:scale(1.07);box-shadow:0 16px 40px -8px rgba(30,91,255,.6)}
+  .vsl-frame .play svg{width:30px;height:30px;margin-left:5px;fill:#0b0b0d}
+
+  /* ---------- TRUST STRIP ---------- */
+  .trust{border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:rgba(255,255,255,.012);padding:26px 0}
+  .trust p{text-align:center;color:var(--muted);font-size:.98rem;max-width:62ch;margin:0 auto}
+  .trust b{color:var(--text);font-weight:600}
+
+  /* ---------- STEPS ---------- */
+  .steps{display:grid;gap:16px;grid-template-columns:1fr}
+  .step{
+    position:relative;background:var(--surface);border:1px solid var(--border);
+    border-radius:18px;padding:26px 24px;overflow:hidden;
+    transition:border-color .25s ease,transform .25s ease;
+  }
+  .step:hover{border-color:var(--border-strong);transform:translateY(-3px)}
+  .step::after{content:"";position:absolute;inset:0 auto auto 0;width:3px;height:100%;
+    background:linear-gradient(var(--cobalt),var(--violet));opacity:.0;transition:opacity .25s}
+  .step:hover::after{opacity:1}
+  .step-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+  .step-num{font-size:.82rem;font-weight:600;color:var(--faint);letter-spacing:.18em}
+  .step-ic{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;
+    background:linear-gradient(150deg,rgba(30,91,255,.18),rgba(124,58,237,.16));
+    border:1px solid var(--border-strong)}
+  .step-ic svg{width:23px;height:23px;stroke:var(--text);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+  .step h3{margin-bottom:8px}
+  .step .tag{font-family:var(--display);font-size:.78rem;letter-spacing:.04em;color:var(--cobalt);display:block;margin-bottom:6px}
+  .step p{color:var(--muted);font-size:.96rem}
+
+  /* ---------- COLOR POP: What You Get ---------- */
+  #system{position:relative}
+  #system::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+    background:radial-gradient(60% 40% at 50% 0%, rgba(30,91,255,.10), transparent 70%)}
+  #system .wrap{position:relative;z-index:1}
+  #system .step{--accent:var(--cobalt)}
+  #system .step:nth-child(4n+1){--accent:var(--cobalt)}
+  #system .step:nth-child(4n+2){--accent:var(--violet)}
+  #system .step:nth-child(4n+3){--accent:var(--mint)}
+  #system .step:nth-child(4n+4){--accent:var(--amber)}
+  #system .step .step-num{color:var(--accent);opacity:.95}
+  #system .step .step-ic{
+    background:color-mix(in srgb, var(--accent) 20%, var(--surface-2));
+    border-color:color-mix(in srgb, var(--accent) 50%, transparent);
+  }
+  #system .step .step-ic svg{stroke:var(--accent)}
+  #system .step::after{background:var(--accent);opacity:.55}
+  #system .step:hover{
+    border-color:color-mix(in srgb, var(--accent) 50%, var(--border-strong));
+    box-shadow:0 26px 60px -34px var(--accent);
+  }
+  #system .step:hover::after{opacity:1}
+
+  /* ---------- APPLY / FORM ---------- */
+  .apply{background:linear-gradient(180deg,rgba(255,255,255,.014),transparent)}
+  .qualify{display:grid;gap:16px;grid-template-columns:1fr;margin:0 0 34px}
+  .q-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px}
+  .q-card.yes{border-color:rgba(34,197,94,.28)}
+  .q-card.no{border-color:rgba(255,255,255,.07)}
+  .q-card h3{font-size:1.02rem;margin-bottom:16px;display:flex;align-items:center;gap:9px}
+  .q-card ul{list-style:none;display:grid;gap:11px}
+  .q-card li{display:flex;gap:11px;font-size:.95rem;color:var(--muted);line-height:1.45}
+  .q-card li svg{width:18px;height:18px;flex:none;margin-top:3px}
+  .form-shell{background:var(--surface);border:1px solid var(--border-strong);border-radius:20px;padding:28px 22px;
+    box-shadow:0 30px 80px -50px rgba(0,0,0,.9)}
+  .form-shell .note{color:var(--faint);font-size:.85rem;text-align:center;margin-top:18px}
+
+  /* Tally placeholder visual (delete once embed is live) */
+  .form-placeholder{border:1.5px dashed var(--border-strong);border-radius:14px;padding:40px 22px;text-align:center;background:rgba(255,255,255,.015)}
+  .form-placeholder h3{margin-bottom:8px}
+  .form-placeholder p{color:var(--muted);font-size:.92rem;max-width:46ch;margin:0 auto 18px}
+  .field-list{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:6px}
+  .field-list span{font-family:var(--display);font-size:.78rem;letter-spacing:.03em;color:var(--muted);
+    border:1px solid var(--border);border-radius:999px;padding:6px 13px;background:var(--surface-2)}
+
+  /* ---------- TESTIMONIALS ---------- */
+  .t-grid{display:grid;gap:16px;grid-template-columns:1fr}
+  .t-card{background:var(--surface);border:1px solid var(--border);border-radius:18px;overflow:hidden;
+    transition:transform .25s ease,border-color .25s ease}
+  .t-card:hover{transform:translateY(-3px);border-color:var(--border-strong)}
+  .t-media{position:relative;aspect-ratio:4/5;background:
+      radial-gradient(120% 90% at 50% 0%, rgba(124,58,237,.22), transparent 60%),var(--surface-2);
+    display:grid;place-items:center;border-bottom:1px solid var(--border)}
+  .t-media .play{width:58px;height:58px;border-radius:50%;background:rgba(255,255,255,.95);display:grid;place-items:center}
+  .t-media .play svg{width:22px;height:22px;margin-left:3px;fill:#0b0b0d}
+  .t-media .ph{position:absolute;bottom:12px;left:12px;font-family:var(--display);font-size:.72rem;
+    color:var(--faint);letter-spacing:.04em;background:rgba(0,0,0,.4);padding:5px 10px;border-radius:7px;border:1px solid var(--border)}
+  .t-body{padding:20px}
+  .t-name{font-family:var(--display);font-weight:600;font-size:1.05rem}
+  .t-ctx{color:var(--faint);font-size:.84rem;margin:2px 0 14px;font-family:var(--display);letter-spacing:.02em}
+  .t-result{display:flex;gap:10px;align-items:flex-start;font-size:.95rem;color:var(--text);line-height:1.45}
+  .t-result svg{width:18px;height:18px;flex:none;margin-top:3px;stroke:var(--mint);fill:none;stroke-width:2}
+
+  /* ---------- JOURNEY ---------- */
+  .journey{background:var(--surface);border:1px solid var(--border);border-radius:22px;padding:38px 26px}
+  .journey p{color:var(--muted);margin-bottom:18px;max-width:64ch}
+  .journey p.kick{color:var(--text);font-size:1.15rem;font-family:var(--display);font-weight:500;line-height:1.4}
+  .journey b{color:var(--text);font-weight:600}
+  .journey .arc{display:grid;gap:10px;grid-template-columns:1fr;margin:26px 0;
+    border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:24px 0}
+  .arc-row{display:flex;align-items:center;gap:14px;font-family:var(--display)}
+  .arc-row .from{color:var(--faint);font-size:.92rem;flex:1}
+  .arc-row .to{color:var(--text);font-size:.98rem;font-weight:500;flex:1;text-align:right}
+  .arc-row .ar{color:var(--cobalt);flex:none}
+  .arc-row .ar svg{width:20px;height:20px;stroke:var(--cobalt);fill:none;stroke-width:2}
+
+  /* ---------- FAQ ---------- */
+  .faq{max-width:760px;margin:0 auto}
+  .faq-item{border:1px solid var(--border);border-radius:14px;margin-bottom:12px;background:var(--surface);overflow:hidden;transition:border-color .2s}
+  .faq-item[open]{border-color:var(--border-strong)}
+  .faq-item summary{
+    list-style:none;cursor:pointer;padding:20px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px;
+    font-family:var(--display);font-weight:600;font-size:1.02rem;
+  }
+  .faq-item summary::-webkit-details-marker{display:none}
+  .faq-item summary .ico{flex:none;width:22px;height:22px;position:relative;transition:transform .25s}
+  .faq-item[open] summary .ico{transform:rotate(45deg)}
+  .faq-item summary .ico::before,.faq-item summary .ico::after{content:"";position:absolute;background:var(--cobalt);border-radius:2px}
+  .faq-item summary .ico::before{top:50%;left:0;right:0;height:2px;transform:translateY(-50%)}
+  .faq-item summary .ico::after{left:50%;top:0;bottom:0;width:2px;transform:translateX(-50%)}
+  .faq-body{padding:0 22px 22px;color:var(--muted);font-size:.97rem}
+
+  /* ---------- FINAL CTA ---------- */
+  .final{text-align:center}
+  .final-card{
+    background:
+      radial-gradient(120% 120% at 50% -20%, rgba(30,91,255,.28), transparent 60%),
+      var(--surface);
+    border:1px solid var(--border-strong);border-radius:26px;padding:56px 26px;
+    box-shadow:0 50px 120px -60px rgba(30,91,255,.5);
+  }
+  .final-card h2{max-width:18ch;margin:14px auto 14px}
+  .final-card .lead{max-width:50ch;margin:0 auto 30px}
+  .final-card .btn{max-width:320px;margin:0 auto}
+  .final-card .micro{color:var(--faint);font-size:.86rem;margin-top:16px;font-family:var(--display);letter-spacing:.02em}
+
+  /* ---------- FOOTER ---------- */
+  footer{border-top:1px solid var(--border);padding:40px 0;text-align:center}
+  footer .logo{justify-content:center;margin-bottom:14px}
+  .foot-links{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;color:var(--faint);font-size:.86rem;margin-bottom:14px}
+  .foot-links a:hover{color:var(--text)}
+  .disclaimer{color:var(--faint);font-size:.78rem;max-width:70ch;margin:0 auto 14px;line-height:1.55}
+  .copyright{color:var(--faint);font-size:.8rem}
+
+  /* ---------- REVEAL ---------- */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(min-width:680px){
+    .logo .full{display:inline}
+    .hero-cta{flex-direction:row;max-width:none;justify-content:center}
+    .hero-cta .btn{width:auto}
+    .steps{grid-template-columns:repeat(2,1fr)}
+    .qualify{grid-template-columns:1fr 1fr}
+    .t-grid{grid-template-columns:repeat(2,1fr)}
+    .arc-row .from,.arc-row .to{font-size:1rem}
+  }
+  @media(min-width:980px){
+    section{padding:96px 0}
+    .steps{grid-template-columns:repeat(3,1fr)}
+    .t-grid{grid-template-columns:repeat(3,1fr)}
+    .form-shell{padding:36px 34px}
+    .journey{padding:48px 44px}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+    .reveal{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="logo">
+      <span class="mark">EA</span>
+      <span><span class="full">Elite Artist Society</span></span>
+    </a>
+    <a href="#apply" class="btn btn-primary">Apply Now</a>
+  </div>
+</header>
+
+<a id="top"></a>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="wrap">
+    <p class="hero-callout reveal">Attention: purpose driven artists who actually care about their fans</p>
+    <h1 class="reveal">Discover the fan funnel system artists like LaRussell, Kennedy Ryon, and Indiextribe are using to build their communities and launch direct to fan offers...</h1>
+    <p class="lead reveal">
+      This little known fan funnel and content system reveals how to build a real community of fans and get paid, without playlisting, meta ads, or guessing what to post every day.
+    </p>
+
+    <!-- VSL -->
+    <div class="vsl reveal">
+      <div class="vsl-frame" id="vslFrame">
+        <img class="vsl-thumb" src="https://i.ytimg.com/vi/_bUCc_ZOnzY/maxresdefault.jpg" alt="Watch the training"
+             onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/_bUCc_ZOnzY/hqdefault.jpg'">
+        <button class="play" type="button" aria-label="Play video" onclick="playVSL()">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="hero-cta reveal">
+      <a href="#apply" class="btn btn-primary">
+        Apply to Join The EAS
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="#system" class="btn btn-ghost">See How It Works</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SECTION 1: WHAT YOU GET ================= -->
+<section id="system">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow" style="justify-content:center">Elite Artist Society</span>
+      <h2>This is what you get when you join the EAS</h2>
+      <p class="lead">When you join you get the full system, strategy, tools, support, and a clear plan to follow from day one.</p>
+    </div>
+
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-top">
+          <span class="step-num">STEP 01</span>
+          <span class="step-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2.2 4.8-4.8 2.2 2.2-4.8z"/></svg></span>
+        </div>
+        <h3>1:1 Battle Plan Call With Anthony</h3>
+        <p>A personal deep dive to audit your profile, your current content strategy, and map out a custom plan together.</p>
+      </div>
+
+      <div class="step reveal">
+        <div class="step-top">
+          <span class="step-num">STEP 02</span>
+          <span class="step-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1.2"/></svg></span>
+        </div>
+        <h3>The One True Fan</h3>
+        <p>We find out exactly who your target audience is. Even if you think you know, I promise we need to go deeper. This is the foundation for everything else we do.</p>
+      </div>
+
+      <div class="step reveal">
+        <div class="step-top">
+          <span class="step-num">STEP 03</span>
+          <span class="step-ic"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h10M4 18h7"/><circle cx="18" cy="15" r="3"/></svg></span>
+        </div>
+        <h3>The Picasso Method</h3>
+        <p>We find content already winning in your niche, reverse engineer why it works, then rebuild it in your own unique voice. You create content that gets discovered on purpose, not by luck.</p>
+      </div>
+
+      <div class="step reveal">
+        <div class="step-top">
+          <span class="step-num">STEP 04</span>
+          <span class="step-ic"><svg viewBox="0 0 24 24"><path d="M3 5h18l-7 8v5l-4 2v-7z"/></svg></span>
+        </div>
+        <h3>The Fan Funnel</h3>
+        <p>We capture emails and phone numbers so you can reach your fans directly, forever.</p>
+      </div>
+
+      <div class="step reveal">
+        <div class="step-top">
+          <span class="step-num">STEP 05</span>
+          <span class="step-ic"><svg viewBox="0 0 24 24"><path d="M5 19h14M7 19V9m5 10V5m5 14v-7"/></svg></span>
+        </div>
+        <h3>The Offer Ladder</h3>
+        <p>From free music to VIP and shows, we build a clear path so your fans can support you directly, how they desire.</p>
+      </div>
+
+      <div class="step reveal">
+        <div class="step-top">
+          <span class="step-num">STEP 06</span>
+          <span class="step-ic"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9.5" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87"/></svg></span>
+        </div>
+        <h3>Coaching &amp; Community</h3>
+        <p>Join group coaching calls every week and get brutally honest feedback from me and the community on your content and funnels.</p>
+      </div>
+    </div>
+
+    <div class="center" style="margin-top:38px">
+      <a href="#apply" class="btn btn-primary" style="width:auto;display:inline-flex">
+        Join The Elite Artist Society
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SECTION 2: APPLY / FORM ================= -->
+<section id="apply" class="apply">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow" style="justify-content:center">Before you apply</span>
+      <h2>This is not for everyone, and that's okay.</h2>
+      <p class="lead">This is called the Elite Artist Society for a reason. We hold ourselves to certain standards and will not compromise that.</p>
+    </div>
+
+    <div class="qualify">
+      <div class="q-card yes reveal">
+        <h3><span class="mint">This is for you if</span></h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> You already post multiple times a week and your music sounds excellent.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> You want a data driven system you control, not another viral hack.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> You are willing to do the unsexy work consistently.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> You want direct, honest feedback and real accountability.</li>
+        </ul>
+      </div>
+      <div class="q-card no reveal">
+        <h3><span style="color:var(--faint)">This is not for you if</span></h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#71717a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg> You are looking for a guarantee, a shortcut, or a quick hack.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#71717a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg> You want someone to do all of it for you.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#71717a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg> You only care about follower counts and likes.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#71717a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg> You want motivation and reassurance more than a system to execute.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="form-shell reveal">
+      <!-- Tally form: https://tally.so/r/3EOBxA  (loader script is at the bottom of this file) -->
+      <iframe data-tally-src="https://tally.so/embed/3EOBxA?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+              loading="lazy" width="100%" height="600" frameborder="0" title="Apply to Elite Artist Society"></iframe>
+
+      <p class="note">Apply now and book a call. Worst case, you walk away with a clear plan and free advice.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SECTION 3: TESTIMONIALS ================= -->
+<section id="proof">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow" style="justify-content:center">Recent case studies</span>
+      <h2>Proof that the system works</h2>
+      <p class="lead">Recent testimonials from artists inside the Elite Artist Society. But you should be skeptical and go fact check me :)</p>
+    </div>
+
+    <!-- Confirm numbers and swap placeholders for real video / photo before publishing -->
+    <div class="t-grid">
+      <div class="t-card reveal">
+        <div class="t-media">
+          <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <span class="ph">Video or photo</span>
+        </div>
+        <div class="t-body">
+          <div class="t-name">LilZib</div>
+          <div class="t-ctx">Alt R&amp;B and hip hop · Illinois</div>
+          <div class="t-result"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            Grew from 12k to 30k followers and earned his first 5k directly from fans through VIP, merch, and pay what you want offers.</div>
+        </div>
+      </div>
+
+      <div class="t-card reveal">
+        <div class="t-media">
+          <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <span class="ph">Video or photo</span>
+        </div>
+        <div class="t-body">
+          <div class="t-name">MultiSzn</div>
+          <div class="t-ctx">Heartbreak rap and R&amp;B · Los Angeles</div>
+          <div class="t-result"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            Grew Spotify monthly listeners from 60k to 86k and built a Discord community of 1,000 engaged fans with paying VIPs.</div>
+        </div>
+      </div>
+
+      <div class="t-card reveal">
+        <div class="t-media">
+          <div class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <span class="ph">Video or photo</span>
+        </div>
+        <div class="t-body">
+          <div class="t-name">Eli</div>
+          <div class="t-ctx">Alt hip hop · Indiana</div>
+          <div class="t-result"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            Turned a scattered, random rollout into a real content system built around his concept project. Eli tripled his followers and monthly listeners and continues to build his community.</div>
+        </div>
+      </div>
+
+      <!-- Duplicate a .t-card block to add more. Placeholders below. -->
+      <div class="t-card reveal">
+        <div class="t-media"><span class="ph">Add client</span></div>
+        <div class="t-body">
+          <div class="t-name">Client name</div>
+          <div class="t-ctx">Niche · City</div>
+          <div class="t-result"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> One specific outcome or result goes here.</div>
+        </div>
+      </div>
+      <div class="t-card reveal">
+        <div class="t-media"><span class="ph">Add client</span></div>
+        <div class="t-body">
+          <div class="t-name">Client name</div>
+          <div class="t-ctx">Niche · City</div>
+          <div class="t-result"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> One specific outcome or result goes here.</div>
+        </div>
+      </div>
+      <div class="t-card reveal">
+        <div class="t-media"><span class="ph">Add client</span></div>
+        <div class="t-body">
+          <div class="t-name">Client name</div>
+          <div class="t-ctx">Niche · City</div>
+          <div class="t-result"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> One specific outcome or result goes here.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow" style="justify-content:center">FAQ</span>
+      <h2>Questions Answered</h2>
+    </div>
+
+    <div class="faq">
+      <details class="faq-item reveal">
+        <summary>What exactly happens after I join?<span class="ico"></span></summary>
+        <div class="faq-body">The moment we say yes, you get instant access to the full platform, the Elite Artist Society, the Elite Playbook, weekly coaching calls, every framework, and all our EAS templates. Within a few days, you have your personal 1:1 kickoff with Anthony to map your plan.</div>
+      </details>
+
+      <details class="faq-item reveal">
+        <summary>How much time do I need each week?<span class="ico"></span></summary>
+        <div class="faq-body">Most artists spend 5 to 10 hours per week between learning, creating, posting, reviewing feedback, and testing new content. Minimum is 4 to 6 focused hours. But it is kinda like joining a gym and asking how long until you get a six pack. It depends on how much consistent effort you put into it.</div>
+      </details>
+
+      <details class="faq-item reveal">
+        <summary>Do you guarantee results?<span class="ico"></span></summary>
+        <div class="faq-body">We don't guarantee a specific follower count, revenue number, or brand deal. What we do guarantee is a structured process, expert feedback, and the tools to help you improve faster than figuring it out alone. In the first 30 to 60 days, we typically look for clearer positioning, stronger hooks, better retention, more consistent output, and improved audience quality. Compounding growth usually becomes visible in months 2 to 3, depending on your starting point and consistency.</div>
+      </details>
+
+      <details class="faq-item reveal">
+        <summary>What if I am starting from a small audience?<span class="ico"></span></summary>
+        <div class="faq-body">Starting smaller can actually be cleaner, less to undo. As long as your music is genuinely good and you are willing to post consistently, the system works. We have helped artists go from a few thousand real followers to engaged, paying communities. The size of the room matters less than what you do with the people in it.</div>
+      </details>
+
+      <details class="faq-item reveal">
+        <summary>Is this a course or a mentorship?<span class="ico"></span></summary>
+        <div class="faq-body">A mentorship. You get a structured learning platform as the foundation, then weekly live calls, direct feedback in the community, and a clear path the whole way through. You are never handed videos and told good luck. You always have a next step and a person to ask.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <a href="#top" class="logo"><span class="mark">EA</span><span>Elite Artist Society</span></a>
+    <div class="foot-links">
+      <a href="#system">How It Works</a>
+      <a href="#proof">Proof</a>
+      <a href="#faq">FAQ</a>
+      <a href="#apply">Apply</a>
+    </div>
+    <p class="disclaimer">Results shown are real clients. Individual results vary based on effort, niche, starting point, and other factors. We do not guarantee specific follower counts, views, or revenue. What we offer is a proven system, hands on support, and the frameworks that have driven results for real independent artists.</p>
+    <p class="copyright">© 2026 Elite Artist Society · UrmetzBeatz Coaching LLC · All rights reserved</p>
+  </div>
+</footer>
+
+<script>
+  // Smooth scroll for in page anchors
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      var id=this.getAttribute('href');
+      if(id.length>1){
+        var el=document.querySelector(id);
+        if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});}
+      }
+    });
+  });
+
+  // Scroll reveal
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);} });
+  },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+
+  // VSL: load the player only after the user clicks (avoids autoplay/config errors)
+  function playVSL(){
+    var f=document.getElementById('vslFrame');
+    if(!f) return;
+    f.innerHTML='<iframe src="https://www.youtube.com/embed/_bUCc_ZOnzY?autoplay=1&rel=0&playsinline=1&modestbranding=1" '+
+      'title="Elite Artist Society" style="position:absolute;inset:0;width:100%;height:100%;border:0" '+
+      'allow="autoplay; encrypted-media; picture-in-picture; web-share" allowfullscreen></iframe>';
+  }
+
+  // Tally embed loader (active once you add the iframe with data-tally-src)
+  var d=document,w="https://tally.so/widgets/embed.js",v=function(){
+    if(typeof Tally!=="undefined"){Tally.loadEmbeds();return;}
+    d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach(function(e){e.src=e.dataset.tallySrc;});
+  };
+  if(typeof Tally==="undefined"&&d.querySelector('iframe[data-tally-src]')){
+    var s=d.createElement("script");s.src=w;s.onload=v;s.onerror=v;d.body.appendChild(s);
+  }
+</script>
+</body>
+</html>
