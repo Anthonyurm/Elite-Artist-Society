@@ -1,1 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Album Drop That Broke His Email</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+<!-- ============================================================
+     TRACKING: GA4 + Meta Pixel
+     Hostname gated. Nothing fires on localhost, Netlify preview
+     URLs, or a file opened straight from your desktop.
+     ============================================================ -->
+<script>
+(function(){
+  var LIVE_HOSTS = ['eliteartistsociety.com','www.eliteartistsociety.com'];
+  if (LIVE_HOSTS.indexOf(window.location.hostname) === -1) return;
+
+  /* ---- GA4 : G-DZWPXR1TV0 ---- */
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ window.dataLayer.push(arguments); }
+  window.gtag = gtag;
+  gtag('js', new Date());
+  gtag('config', 'G-DZWPXR1TV0');
+  var ga = document.createElement('script');
+  ga.async = true;
+  ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-DZWPXR1TV0';
+  document.head.appendChild(ga);
+
+  /* ---- Meta Pixel : 1730534501305028 ---- */
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+  document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init','1730534501305028');
+  fbq('track','PageView');
+})();
+</script>
+<noscript><img height="1" width="1" style="display:none" alt=""
+  src="https://www.facebook.com/tr?id=1730534501305028&ev=PageView&noscript=1"/></noscript>
+
+<style>
+:root{
+  --cobalt:#1E5BFF;
+  --violet:#7C3AED;
+  --amber:#F59E0B;
+  --mint:#22C55E;
+  --ink:#050814;
+  --ink-elev:#0B1120;
+  --paper:#F9FAFB;
+  --card:#FFFFFF;
+  --line:#E5E7EB;
+  --text:#020617;
+  --text-sub:#6B7280;
+  --text-light:#F9FAFB;
+  --text-light-sub:#9CA3AF;
+  --col:760px;
+  --wide:1040px;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--text);
+  font-family:Inter,-apple-system,"Segoe UI",Arial,sans-serif;
+  font-size:16.5px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4,.display{font-family:"Space Grotesk",Inter,"Segoe UI",Arial,sans-serif;}
+
+/* ---------- layout primitives: .wrap owns horizontal only, section owns vertical ---------- */
+.wrap{max-width:var(--col);margin:0 auto;padding-left:28px;padding-right:28px;}
+.wrap.wide{max-width:var(--wide);}
+section{padding-top:60px;padding-bottom:60px;}
+section.tight{padding-top:36px;padding-bottom:36px;}
+.dark{background:var(--ink);color:var(--text-light);}
+.dark h2,.dark h3{color:var(--text-light);}
+
+/* ---------- scroll progress ---------- */
+#prog{position:fixed;top:0;left:0;height:3px;width:0;background:var(--cobalt);z-index:99;}
+
+/* ---------- cover ---------- */
+.cover{
+  background:var(--ink);
+  color:var(--text-light);
+  padding-top:88px;padding-bottom:72px;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.eyebrow{
+  font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--cobalt);margin:0 0 26px;
+}
+.cover h1{
+  font-size:clamp(38px,6.4vw,62px);
+  line-height:1.05;font-weight:700;letter-spacing:-.02em;
+  margin:0 0 22px;max-width:16ch;
+}
+.cover .lede{
+  font-size:clamp(16px,2.2vw,19px);color:var(--text-light-sub);
+  max-width:52ch;margin:0;
+}
+.rule{height:1px;background:rgba(255,255,255,.12);margin:44px 0 40px;}
+.cover-stats{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.10);
+}
+.cover-stats .cs{background:var(--ink);padding:26px 22px;}
+.cs .num{
+  font-family:"Space Grotesk";font-size:clamp(24px,3.4vw,32px);font-weight:700;
+  letter-spacing:-.02em;color:var(--mint);line-height:1.1;display:block;
+}
+.cs .lab{font-size:13px;color:var(--text-light-sub);margin-top:8px;display:block;line-height:1.45;}
+
+/* ---------- contents ---------- */
+.toc{background:var(--ink-elev);color:var(--text-light-sub);padding-top:30px;padding-bottom:30px;}
+.toc .k{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--text-light-sub);margin-bottom:16px;}
+.toc ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:8px 34px;counter-reset:t;}
+.toc a{
+  color:var(--text-light);text-decoration:none;font-size:14.5px;
+  display:flex;gap:12px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.06);
+}
+.toc a:hover{color:var(--cobalt);}
+.toc a .n{color:var(--cobalt);font-variant-numeric:tabular-nums;font-weight:600;font-size:12.5px;padding-top:2px;}
+
+/* ---------- typography ---------- */
+h2{
+  font-size:clamp(27px,4vw,34px);font-weight:700;letter-spacing:-.02em;
+  line-height:1.15;margin:0 0 8px;
+}
+h2 + .sub{color:var(--text-sub);margin:0 0 34px;font-size:17px;}
+h3{font-size:20px;font-weight:600;letter-spacing:-.01em;margin:36px 0 10px;}
+p{margin:0 0 18px;}
+a{color:var(--cobalt);}
+.anchor{scroll-margin-top:24px;}
+.hbar{width:44px;height:3px;background:var(--cobalt);margin-bottom:20px;border-radius:2px;}
+
+/* ---------- glossary ---------- */
+.gloss{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;}
+.gloss .row{background:var(--card);padding:18px 22px;display:grid;grid-template-columns:190px 1fr;gap:22px;}
+.gloss .term{
+  font-family:"Space Grotesk";font-weight:600;font-size:15px;color:var(--violet);
+  line-height:1.4;
+}
+.gloss .def{font-size:15.5px;color:var(--text);line-height:1.6;}
+
+/* ---------- results grid ---------- */
+.results{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.stat{
+  background:var(--card);border:1px solid var(--line);border-radius:10px;
+  padding:22px 20px;border-top:3px solid var(--mint);
+}
+.stat .n{
+  font-family:"Space Grotesk";font-size:26px;font-weight:700;letter-spacing:-.02em;
+  line-height:1.15;display:block;margin-bottom:8px;
+}
+.stat .l{font-size:13.5px;color:var(--text-sub);line-height:1.5;display:block;}
+.stat.zero{border-top-color:var(--text-sub);}
+.stat.zero .n{color:var(--text-sub);}
+
+/* ---------- link cards ---------- */
+.links{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:22px 0 8px;}
+.linkcard{
+  display:block;text-decoration:none;background:var(--card);border:1px solid var(--line);
+  border-left:3px solid var(--cobalt);border-radius:8px;padding:18px 20px;color:var(--text);
+  font-weight:500;line-height:1.45;transition:border-color .15s,transform .15s;
+}
+.linkcard:hover{border-color:var(--cobalt);transform:translateY(-1px);}
+.linkcard .go{display:block;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--cobalt);margin-top:10px;font-weight:600;}
+
+/* ---------- bullet lists ---------- */
+ul.marks{list-style:none;margin:0 0 8px;padding:0;}
+ul.marks li{position:relative;padding-left:26px;margin-bottom:14px;line-height:1.6;}
+ul.marks li:before{
+  content:"";position:absolute;left:0;top:.62em;width:9px;height:9px;border-radius:2px;
+  background:var(--cobalt);
+}
+ul.marks.mint li:before{background:var(--mint);}
+ul.marks.violet li:before{background:var(--violet);}
+
+/* ---------- problem cards ---------- */
+.prob{
+  background:var(--card);border:1px solid var(--line);border-left:3px solid var(--amber);
+  border-radius:8px;padding:22px 24px;margin-bottom:14px;
+}
+.chip{
+  display:inline-block;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  padding:4px 9px;border-radius:4px;margin-bottom:12px;
+}
+.chip.amber{background:rgba(245,158,11,.12);color:#B45309;}
+.chip.violet{background:rgba(124,58,237,.10);color:var(--violet);}
+.chip.mint{background:rgba(34,197,94,.12);color:#15803D;}
+.chip.cobalt{background:rgba(30,91,255,.10);color:var(--cobalt);}
+.prob h3{margin:0 0 10px;font-size:19px;}
+.prob p:last-child{margin-bottom:0;}
+
+/* ---------- callout ---------- */
+.callout{
+  background:#FBF9FF;border:1px solid #E4D9FB;border-left:3px solid var(--violet);
+  border-radius:8px;padding:24px 26px;
+}
+.callout h3{margin:0 0 12px;color:var(--violet);font-size:19px;}
+.callout p:last-child{margin-bottom:0;}
+
+/* ---------- campaign + email cards ---------- */
+.campaign-head{margin:56px 0 20px;padding-top:26px;border-top:1px solid var(--line);}
+.campaign-head:first-of-type{margin-top:0;}
+.campaign-head h3{margin:0;font-size:23px;}
+.note{
+  background:#F3F6FF;border:1px solid #D8E2FF;border-radius:8px;padding:16px 20px;
+  font-size:15px;color:#1E3A8A;margin:14px 0 0;
+}
+.note p{margin:0 0 8px;}
+.note p:last-child{margin:0;}
+.note .nlab{font-weight:600;color:var(--cobalt);}
+
+.email{
+  background:var(--card);border:1px solid var(--line);border-radius:12px;
+  overflow:hidden;margin:22px 0 0;
+}
+.email .ehead{
+  display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;
+  padding:16px 24px;background:var(--ink-elev);color:var(--text-light);
+}
+.email .ehead .t{font-family:"Space Grotesk";font-weight:600;font-size:16px;}
+.email .ehead .m{font-size:12.5px;color:var(--text-light-sub);text-align:right;line-height:1.5;}
+.email .esub{padding:18px 24px 16px;border-bottom:1px solid var(--line);}
+.email .esub .k{font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--text-sub);margin-bottom:7px;}
+.email .esub .v{font-family:"Space Grotesk";font-size:19px;font-weight:600;color:var(--cobalt);letter-spacing:-.01em;}
+.email .ebody{padding:22px 24px 6px;font-size:15.5px;color:#111827;}
+.email .ebody p{margin:0 0 15px;}
+.email .ebody ul{margin:0 0 15px;padding-left:20px;}
+.email .ebody li{margin-bottom:6px;}
+.email .ebody .sig{color:var(--text-sub);}
+.email .emetrics{
+  display:flex;gap:34px;padding:16px 24px;border-top:1px solid var(--line);background:#FCFDFE;
+}
+.email .emetrics .met{min-width:104px;}
+.email .emetrics .k{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-sub);}
+.email .emetrics .v{font-family:"Space Grotesk";font-size:21px;font-weight:700;color:var(--mint);margin-top:2px;}
+.email .emetrics .v.na{color:var(--text-sub);}
+.bar{height:3px;background:var(--line);border-radius:2px;margin-top:8px;width:100%;}
+.bar span{display:block;height:100%;border-radius:2px;background:var(--mint);}
+
+.story{
+  border:1px dashed var(--line);border-radius:8px;padding:16px 20px;margin-top:16px;
+  font-size:14.5px;color:var(--text-sub);
+}
+.story .k{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--text-sub);margin-bottom:8px;font-weight:600;}
+.story p{margin:0;color:var(--text);}
+
+.seg{margin:40px 0 0;display:flex;align-items:center;gap:14px;}
+.seg h4{font-family:"Space Grotesk";font-size:17px;margin:0;font-weight:600;}
+.seg .chip{margin-bottom:0;}
+
+/* ---------- segments list ---------- */
+.segments{display:grid;gap:12px;margin-top:20px;}
+.segbox{
+  background:var(--card);border:1px solid var(--line);border-left:3px solid var(--violet);
+  border-radius:8px;padding:16px 20px;font-size:15.5px;
+}
+
+/* ---------- CTA ---------- */
+.cta{background:var(--ink);color:var(--text-light);text-align:center;padding-top:76px;padding-bottom:76px;}
+.cta h2{font-size:clamp(28px,4.6vw,40px);max-width:18ch;margin:0 auto 18px;}
+.cta p{color:var(--text-light-sub);max-width:56ch;margin:0 auto 32px;}
+.btn{
+  display:inline-block;background:var(--cobalt);color:#fff;text-decoration:none;
+  font-weight:600;font-size:15.5px;padding:16px 34px;border-radius:8px;
+  font-family:"Space Grotesk";letter-spacing:.01em;
+}
+.btn:hover{background:#1747CC;}
+footer{background:var(--ink);color:var(--text-light-sub);font-size:12.5px;line-height:1.7;
+  padding-bottom:56px;border-top:1px solid rgba(255,255,255,.08);padding-top:26px;}
+footer .wrap{max-width:var(--col);}
+
+/* ---------- responsive ---------- */
+@media(max-width:900px){
+  .results{grid-template-columns:repeat(2,1fr);}
+  .cover-stats{grid-template-columns:repeat(2,1fr);}
+  .toc ol{grid-template-columns:1fr;}
+  .links{grid-template-columns:1fr;}
+}
+@media(max-width:620px){
+  body{font-size:16px;}
+  .wrap{padding-left:20px;padding-right:20px;}
+  section{padding-top:44px;padding-bottom:44px;}
+  .gloss .row{grid-template-columns:1fr;gap:6px;}
+  .email .emetrics{gap:20px;}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .linkcard{transition:none}
+}
+
+/* ---------- print ---------- */
+@media print{
+  html,body{background:#fff;}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  #prog,.toc{display:none;}
+  section{padding-top:26px;padding-bottom:26px;}
+  .cover{padding-top:40px;padding-bottom:40px;}
+  .email,.prob,.callout,.stat,.gloss .row,.segbox{break-inside:avoid;page-break-inside:avoid;}
+  h2{break-after:avoid;}
+  .cta{page-break-before:always;}
+}
+</style>
+</head>
+<body>
+
+<div id="prog"></div>
+
+<!-- COVER -->
+<header class="cover">
+  <div class="wrap wide">
+    <p class="eyebrow">By The Elite Artist Society</p>
+    <h1>Most People Don't Read These. Be the 1% You Owe It To Yourself</h1>
+    <p class="lede">I documented everything here including our mistakes from Multiszn's seven-day album launch last October.</p>
+    <div class="rule"></div>
+    <div class="cover-stats">
+      <div class="cs"><span class="num">4,341,313</span><span class="lab">Organic views generated with zero ad spend</span></div>
+      <div class="cs"><span class="num">12,571</span><span class="lab">Email subscribers by the end of the campaign</span></div>
+      <div class="cs"><span class="num">1,555</span><span class="lab">Pre-saves in seven days</span></div>
+      <div class="cs"><span class="num">114k Monthly</span><span class="lab">Listeners the first week of the drop</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- CONTENTS -->
+<nav class="toc">
+  <div class="wrap wide">
+    <div class="k">Contents</div>
+    <ol>
+      <li><a href="#who"><span class="n">01</span> Who is Multiszn?</a></li>
+      <li><a href="#words"><span class="n">02</span> What the words mean</a></li>
+      <li><a href="#results"><span class="n">03</span> The Results of Our Campaign</a></li>
+      <li><a href="#offer"><span class="n">04</span> The Offer</a></li>
+      <li><a href="#content"><span class="n">05</span> The Content Strategy</a></li>
+      <li><a href="#problems"><span class="n">06</span> What Did Not Work So Well</a></li>
+      <li><a href="#solved"><span class="n">07</span> How We Solved Those Problems</a></li>
+      <li><a href="#emails"><span class="n">08</span> Here Is Every Email We Sent In Order</a></li>
+      <li><a href="#deliverability"><span class="n">09</span> The deliverability system</a></li>
+      <li><a href="#build"><span class="n">10</span> Time For You to Build Your Own Funnels</a></li>
+    </ol>
+  </div>
+</nav>
+
+<!-- WHO -->
+<section id="who" class="anchor">
+  <div class="wrap">
+    <div class="hbar"></div>
+    <h2>Who is Multiszn?</h2>
+    <p>MultiSzn is an independent artist. Over four weeks we posted content that pulled 4,341,313 organic views with no ad spend, moved those viewers onto an email list, and sold an album to that list before dropped on Spotify.</p>
+    <p>Then we broke his email service, and thousands of people who signed up never got our emails (meaning we lost a lot of potential sales).</p>
+    <p>I included how to prevent this from happening again in the future if you actually execute on this.</p>
+    <p>Everything in here is the real campaign. Real subject lines, real body copy, real open rates, real click rates, in the order they went out. I have not rewritten a single email to make it look better in hindsight.</p>
+    <p>Be skeptical. That is the correct response to anything you read on the internet, including this. The content links are live. Go watch them.</p>
+  </div>
+</section>
+
+<!-- GLOSSARY -->
+<section id="words" class="anchor" style="background:#F3F4F6;">
+  <div class="wrap">
+    <div class="hbar" style="background:var(--violet)"></div>
+    <h2>What the words mean</h2>
+    <p class="sub">If any of these are new to you, read this page first. Nothing later in the document assumes you already know them.</p>
+    <div class="gloss">
+      <div class="row"><div class="term">Fan funnel</div><div class="def">The system that turns a viewer into a contact you own. Content → comment a keyword → automated DM → email or phone number → offer.</div></div>
+      <div class="row"><div class="term">Keyword comment</div><div class="def">Asking people to comment a specific word so software can DM them automatically. Here the word was "ME".</div></div>
+      <div class="row"><div class="term">Trial reel</div><div class="def">An Instagram post shown only to people who do not follow you. Used to test hooks and ideas. Also used to PRINT VIEWS lol.</div></div>
+      <div class="row"><div class="term">Segment</div><div class="def">A portion of your email list grouped by their behavior. So, for example, your "warm" list is people who recently engaged with an email you sent.</div></div>
+      <div class="row"><div class="term">Tag</div><div class="def">A label stuck on a single contact so you can find them or exclude them later.</div></div>
+      <div class="row"><div class="term">Deliverability</div><div class="def">Whether your email reaches the inbox or lands in spam.</div></div>
+      <div class="row"><div class="term">Open rate</div><div class="def">The percentage of delivered emails that got opened.</div></div>
+      <div class="row"><div class="term">CTR</div><div class="def">Click through rate. The percentage of people who clicked a link inside.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section id="results" class="anchor">
+  <div class="wrap wide">
+    <div class="hbar" style="background:var(--mint)"></div>
+    <h2>The Results of Our Campaign</h2>
+    <p class="sub">Here are the unfiltered results...</p>
+    <div class="results">
+      <div class="stat"><span class="n" style="color:var(--mint)">5,000</span><span class="l">Emails collected before the drop went live on October 31st</span></div>
+      <div class="stat"><span class="n" style="color:var(--mint)">25</span><span class="l">Purchases</span></div>
+      <div class="stat"><span class="n" style="color:var(--mint)">$55</span><span class="l">Per purchase</span></div>
+      <div class="stat"><span class="n" style="color:var(--mint)">~2,000</span><span class="l">Session views on the Shopify page</span></div>
+      <div class="stat"><span class="n" style="color:var(--mint)">~2.5%</span><span class="l">Landing page conversion. Session views are not unique views, so the real pool was smaller than 2,000.</span></div>
+      <div class="stat"><span class="n" style="color:var(--mint)">80%+</span><span class="l">Profit margin</span></div>
+      <div class="stat"><span class="n" style="color:var(--mint)">4,341,313</span><span class="l">Organic views across all social posts using the fan funnel system</span></div>
+      <div class="stat zero"><span class="n">$0</span><span class="l">Spent on ads</span></div>
+      <div class="stat"><span class="n" style="color:var(--mint)">1,555</span><span class="l">Total pre-saves in seven days</span></div>
+      <div class="stat"><span class="n" style="color:var(--mint)">~60%</span><span class="l">Of people who commented the keyword actually pre-saved</span></div>
+      <div class="stat"><span class="n" style="color:var(--mint)">60k → 73k</span><span class="l">Spotify monthly listeners in the first week of the drop</span></div>
+      <div class="stat"><span class="n" style="color:var(--mint)">12,571</span><span class="l">Active email subscribers at the close of the campaign</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFER -->
+<section id="offer" class="anchor" style="background:#F3F4F6;">
+  <div class="wrap">
+    <div class="hbar"></div>
+    <h2>The Offer</h2>
+    <p>We ran an offer exclusively to an email list of 5,000 people over the course of seven days.</p>
+    <p>The offer bundled three things: a t shirt, the fifteen-song album, and access to the Discord community.</p>
+    <p>Twenty-five people bought. About 2,000 session views hit the Shopify page, and because session views count returning visitors more than once, conversion from those sat around 2.5%. We do not have unique visitors tracked.</p>
+    <p style="margin-bottom:0">Our profit margins were above 80 percent.</p>
+  </div>
+</section>
+
+<!-- CONTENT STRATEGY -->
+<section id="content" class="anchor">
+  <div class="wrap">
+    <div class="hbar"></div>
+    <h2>The Content Strategy</h2>
+    <p>We relied heavily on storytelling content.</p>
+    <p style="margin-bottom:0">Here are two examples of the types of posts we created.</p>
+    <div class="links">
+      <a class="linkcard" href="https://www.instagram.com/reel/DQIQBofEmQO/?utm_source=ig_web_copy_link&amp;igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener">How we launched the offer<span class="go">Watch the reel</span></a>
+      <a class="linkcard" href="https://www.instagram.com/reel/DRN0FbWkmFq/?utm_source=ig_web_copy_link&amp;igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener">How we got a TON of pre-saves and went viral again<span class="go">Watch the reel</span></a>
+    </div>
+    <h3>Our Content Strategy:</h3>
+    <ul class="marks">
+      <li>We made many variations of these posts and uploaded as trial reels three to five times a day.</li>
+      <li>We posted performance videos posted alongside them.</li>
+      <li>We used the fan funnel system on every single one.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- PROBLEMS -->
+<section id="problems" class="anchor" style="background:#F3F4F6;">
+  <div class="wrap">
+    <div class="hbar" style="background:var(--amber)"></div>
+    <h2>What Did Not Work So Well</h2>
+    <div class="prob">
+      <span class="chip amber">Problem 1</span>
+      <h3>The only way in was a comment</h3>
+      <p>We told people they would only be able to hear the album if they commented ME on the Instagram content we posted.</p>
+    </div>
+    <div class="prob">
+      <span class="chip amber">Problem 2</span>
+      <h3>The email system could not carry it</h3>
+      <p>Deliverability was the main problem. Open rates were low and a lot of people messaged us saying they never got our emails.</p>
+      <p>The cause was volume. The socials blew up and we collected and sent five times more emails than we expected. The setup was not built for that load, so the messages did not land.</p>
+    </div>
+    <div class="prob">
+      <span class="chip amber">Problem 3</span>
+      <h3>We could not meet the demand we created</h3>
+      <p>Enough people were locked out that the honest move was to relaunch. We decided it made more sense to put the music on streaming for free so everyone who wanted it could finally hear it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTIONS -->
+<section id="solved" class="anchor">
+  <div class="wrap">
+    <div class="hbar" style="background:var(--mint)"></div>
+    <h2>How We Solved Those Problems</h2>
+    <ul class="marks mint" style="margin-bottom:34px">
+      <li>Fix deliverability so people actually see the emails. We authenticated the domain, optimized the DNS settings, and segmented the list.</li>
+      <li>Run a pay what you want offer for the people who never got the album. That collects pre-saves and gives an early listen on the same page.</li>
+      <li>Give the people who purchased a free bundle of new music. Make them founders of the Discord as their role. They get the founders edition of the pack.</li>
+      <li>Personally thank every person who purchased. All twenty five of them.</li>
+      <li>Run a deliverability optimization automation across the whole list.</li>
+    </ul>
+    <div class="callout">
+      <h3>Why the buyers got upgraded instead of refunded</h3>
+      <p>The album was about to go free on streaming. Twenty five people had already paid for it. Left alone, that is twenty five people who feel stupid for supporting early, and those are the exact people you cannot afford to lose. Upgrading them costs almost nothing and it protects the behavior you want repeated.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EMAILS -->
+<section id="emails" class="anchor" style="background:#F3F4F6;">
+  <div class="wrap">
+    <div class="hbar"></div>
+    <h2>Here Is Every Email We Sent In Order</h2>
+    <p class="sub">I wrote these out exactly how I wrote them in the campaign and included the instructions I gave to Multiszn during the campaign. You can see which list we sent each email to in the top right corner of each email.</p>
+
+    <!-- CAMPAIGN 1 -->
+    <div class="campaign-head">
+      <span class="chip violet">Campaign 1</span>
+      <h3>Give past buyers an upgrade</h3>
+      <p style="margin:10px 0 0;color:var(--text-sub)">Sent as a one off campaign to all buyers.</p>
+      <div class="note">
+        <p class="nlab">Before sending:</p>
+        <p>1. Manually add all people who purchased who are not on the email list. Add the tag FC-01-PURCHASED to those contacts.</p>
+        <p>2. Make an announcement on Discord. Give them the Founder's Role.</p>
+      </div>
+    </div>
+
+    <div class="email">
+      <div class="ehead">
+        <div class="t">The Founders Edition</div>
+        <div class="m">List: Buyers<br>November 9th, 2025 at 9:00am</div>
+      </div>
+      <div class="esub"><div class="k">Subject</div><div class="v">You got the Founders Edition</div></div>
+      <div class="ebody">
+        <p>I can't believe I'm saying this…</p>
+        <p>But you actually broke my email.</p>
+        <p>Over 9,500 people joined this community so fast that the system couldn't handle it.</p>
+        <p>And I gotta be honest with you about something…</p>
+        <p>I originally said I wouldn't drop The Series of Love album on streaming.</p>
+        <p>But in the last week I've had so many people begging to hear it that it feels wrong not to give them the chance.</p>
+        <p>So, I upgraded your purchase…</p>
+        <p>Here's what you get as a founder:</p>
+        <ul>
+          <li>An exclusive Founder's role on Discord</li>
+          <li>A private deluxe version of the album only you will hear (all new songs)</li>
+          <li>A 20% discount on the next drop</li>
+        </ul>
+        <p>Thank you for your support.</p>
+        <p>You can get your founder items here on Discord: [invite link]</p>
+        <p class="sig">Talk soon,<br>Multiszn</p>
+      </div>
+      <div class="emetrics">
+        <div class="met"><div class="k">Open rate</div><div class="v">77.8%</div><div class="bar"><span style="width:77.8%"></span></div></div>
+        <div class="met"><div class="k">CTR</div><div class="v na">NA</div></div>
+      </div>
+    </div>
+
+    <!-- CAMPAIGN 2 -->
+    <div class="campaign-head">
+      <span class="chip violet">Campaign 2</span>
+      <h3>Fix deliverability, lead into the pre-save</h3>
+    </div>
+
+    <div class="email">
+      <div class="ehead">
+        <div class="t">Email 1</div>
+        <div class="m">List: VIP audience, 90 days<br>November 10th, 2025 at 10:00am ET</div>
+      </div>
+      <div class="esub"><div class="k">Subject</div><div class="v">quick favor</div></div>
+      <div class="ebody">
+        <p>Hey, quick favor.</p>
+        <p>Can you see this email?</p>
+        <p>Just reply "yes" so I know my emails are reaching you.</p>
+        <p class="sig">Multiszn</p>
+      </div>
+      <div class="emetrics">
+        <div class="met"><div class="k">Open rate</div><div class="v">60.5%</div><div class="bar"><span style="width:60.5%"></span></div></div>
+        <div class="met"><div class="k">CTR</div><div class="v na">NA</div></div>
+      </div>
+    </div>
+
+    <div class="email">
+      <div class="ehead">
+        <div class="t">Email 2</div>
+        <div class="m">List: Warm audience, 90 days<br>November 10th, 2025 at 2:00pm ET</div>
+      </div>
+      <div class="esub"><div class="k">Subject</div><div class="v">quick favor</div></div>
+      <div class="ebody">
+        <p>Hey, quick favor.</p>
+        <p>Can you see this email?</p>
+        <p>Just reply "yes" so I know my emails are reaching you.</p>
+        <p class="sig">Multiszn</p>
+      </div>
+      <div class="emetrics">
+        <div class="met"><div class="k">Open rate</div><div class="v">54.2%</div><div class="bar"><span style="width:54.2%"></span></div></div>
+        <div class="met"><div class="k">CTR</div><div class="v na">NA</div></div>
+      </div>
+    </div>
+
+    <div class="email">
+      <div class="ehead">
+        <div class="t">Email 3</div>
+        <div class="m">List: Cold audience, 180 days<br>November 12th, 2025 at 12:00pm ET</div>
+      </div>
+      <div class="esub"><div class="k">Subject</div><div class="v">still want early access?</div></div>
+      <div class="ebody">
+        <p>Recently, you commented on <a href="https://www.instagram.com/reel/DQIQBofEmQO/?utm_source=ig_web_copy_link&amp;igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener">this Instagram post</a> about early access to my Album "The Series of Love"</p>
+        <p>Do you still want early access?</p>
+        <p>If yes, reply "I'm ready" to this email and I'll make sure you get it in two days.</p>
+        <p>If not, no worries. I'll pause emails so I don't bug you.</p>
+      </div>
+      <div class="emetrics">
+        <div class="met"><div class="k">Open rate</div><div class="v">13.6%</div><div class="bar"><span style="width:13.6%"></span></div></div>
+        <div class="met"><div class="k">CTR</div><div class="v">0.34%</div></div>
+      </div>
+    </div>
+
+    <div class="story">
+      <div class="k">Paired story, posted November 12th at 12pm ET (9am PT):</div>
+      <p>check your email - from 'multiszn' you might need to peep spam or promotions if you don't see it. Please mark as not spam when you find it. Means so much and will help me be able to connect with you!</p>
+    </div>
+
+    <!-- CAMPAIGN 3 -->
+    <div class="campaign-head">
+      <span class="chip violet">Campaign 3</span>
+      <h3>The announcement</h3>
+      <p style="margin:10px 0 0;color:var(--text-sub)">Posted to Instagram, story, and broadcast at 2pm ET (11am PT) on November 14th.</p>
+    </div>
+
+    <div class="email">
+      <div class="ehead">
+        <div class="t">The post</div>
+        <div class="m">Instagram, story, and broadcast<br>November 14th, 2:00pm ET</div>
+      </div>
+      <div class="ebody" style="padding-top:22px">
+        <p>Last week, so many people commented on my post asking to hear my upcoming album that it BROKE my email service.</p>
+        <p>Instead of dropping it on Spotify, I tried something different. I tried emailing it out, but I've been flooded with messages from people saying they never got my emails - which means they couldn't hear the album (show messages)</p>
+        <p>So here's what we're doing:</p>
+        <p>On NOVEMBER 21ST , the album is officially dropping on Spotify and all streaming platforms.</p>
+        <p>That way, everyone can hear it</p>
+        <p>BUT since YOU'RE seeing this now, I have a chance for you to hear it right now before anyone else does!!!</p>
+        <p>Comment "ME" and I'll send you the link to pre-save it and hear it early before it drops.</p>
+      </div>
+      <div class="esub" style="border-bottom:none;border-top:1px solid var(--line)">
+        <div class="k">Caption</div>
+        <p style="margin:0;font-size:15.5px">I promised to never put this on streaming…. But you guys changed my mind, You asked for a way to share it. Comment "ME" and I'll send you the link to pre-save it so you don't miss the drop AND even get to hear it before anyone else</p>
+      </div>
+    </div>
+
+    <div class="email">
+      <div class="ehead">
+        <div class="t">Email 4</div>
+        <div class="m">List: Warm and VIP, plus the new cold audience who converted to warm<br>November 14th, 2025 at 2:00pm ET</div>
+      </div>
+      <div class="esub"><div class="k">Subject</div><div class="v">you asked for it, here's the album</div></div>
+      <div class="ebody">
+        <p>As promised, here's the album</p>
+        <p>Recently you commented on my Instagram saying you wanted access to my album, "The Series of Love"</p>
+        <p>And there were so many comments from people dying to hear this album that it actually broke the system I use to send these emails.</p>
+        <p>A lot of people messaged me saying they never got my emails, which means they never had the chance to hear it.</p>
+        <p>And I believe this album has the power to heal and help those who need to hear it.</p>
+        <p>So, here's what we're doing.</p>
+        <p>On November 21st (NEXT FRIDAY) the album is officially dropping on all streaming platforms so anyone can hear it!!</p>
+        <p>And because you were early...</p>
+        <p>You can hear the album now before it drops and pre-save it, so you don't miss it.</p>
+        <p>Here's the link: HEAR THE ALBUM BEFORE IT DROPS</p>
+        <p class="sig">Talk soon,<br>Multiszn</p>
+      </div>
+      <div class="emetrics">
+        <div class="met"><div class="k">Open rate</div><div class="v">33.4%</div><div class="bar"><span style="width:33.4%"></span></div></div>
+        <div class="met"><div class="k">CTR</div><div class="v">6.6%</div></div>
+      </div>
+    </div>
+
+    <!-- CAMPAIGN 4 -->
+    <div class="campaign-head">
+      <span class="chip violet">Campaign 4</span>
+      <h3>The pre-save automation</h3>
+      <div class="note">
+        <p><span class="nlab">Drops on:</span> November 21st, 2025</p>
+        <p><span class="nlab">Automation triggers when:</span> a contact subscribes to the main list, or the tag PRESAVE-SOL-TRUE is added.</p>
+      </div>
+    </div>
+
+    <div class="seg">
+      <span class="chip cobalt">Segment 1</span>
+      <h4>Pre-save success</h4>
+    </div>
+
+    <div class="email">
+      <div class="ehead">
+        <div class="t">Email 1</div>
+        <div class="m">List: All, excluding inactive (cold) who did not pre-save<br>Sent on pre-save, before the drop</div>
+      </div>
+      <div class="esub"><div class="k">Subject</div><div class="v">thank you for pre-saving</div></div>
+      <div class="ebody">
+        <p>Thank you for pre-saving the Series of Love.</p>
+        <p>I'm independent, so it's basically just me, my laptop, and way too much caffeine trying to keep all this running 😅</p>
+        <p>But the truth is… I don't want this to be a one-way thing.</p>
+        <p>The whole point of releasing this album was to connect with more people like you.</p>
+        <p>So, I'm giving you free access to my private Discord.</p>
+        <p>Inside, you'll get:</p>
+        <ul>
+          <li>behind-the-scenes updates I don't post anywhere else</li>
+          <li>early listens and drops before they go public</li>
+          <li>direct access to me so we can actually talk</li>
+          <li>a space full of people who felt something from the music just like you</li>
+        </ul>
+        <p>If that sounds like your vibe, join here</p>
+        <p class="sig">Talk soon,<br>Multiszn</p>
+      </div>
+      <div class="emetrics">
+        <div class="met"><div class="k">Open rate</div><div class="v">10.6%</div><div class="bar"><span style="width:10.6%"></span></div></div>
+        <div class="met"><div class="k">CTR</div><div class="v">1.9%</div></div>
+      </div>
+    </div>
+
+    <div class="email">
+      <div class="ehead">
+        <div class="t">Email 2 · It's out</div>
+        <div class="m">List: All, excluding inactive (cold) who did not pre-save<br>November 21st, 2025 at 2:00pm ET</div>
+      </div>
+      <div class="esub"><div class="k">Subject</div><div class="v">i got cheated on while making this</div></div>
+      <div class="ebody">
+        <p>What is love?</p>
+        <p>Some say it's a feeling. Others say it's a sacrifice. Many don't believe in love...</p>
+        <p>And I don't blame them because for the longest time, I wasn't sure what love was or meant either...</p>
+        <p>My first girlfriend I thought I was gonna be with for life lasted 6 years and then she cut it off and broke my heart.</p>
+        <p>The second girl I gave my heart to cheated on me at a Halloween party...</p>
+        <p>But that third girl...</p>
+        <p>Turned out to be the love of my life. And I proposed to her the other day.</p>
+        <p>Both times I got my heart broken I made some music about it...</p>
+        <p>And I get thousands of messages every day saying that my music saved them.</p>
+        <p>I spent three years of my life creating for this moment.</p>
+        <p>This album is a true reflection of what love is.</p>
+        <p>And I hope you find healing and peace as I did while making them.</p>
+        <p>Listen to the Series of Love now by clicking here</p>
+        <p class="sig">Thank you for your support,<br>Multiszn</p>
+      </div>
+      <div class="emetrics">
+        <div class="met"><div class="k">Open rate</div><div class="v">15.4%</div><div class="bar"><span style="width:15.4%"></span></div></div>
+        <div class="met"><div class="k">CTR</div><div class="v">0.59%</div></div>
+      </div>
+    </div>
+
+    <div class="seg">
+      <span class="chip cobalt">Segment 2</span>
+      <h4>Did not pre-save</h4>
+    </div>
+
+    <div class="email">
+      <div class="ehead">
+        <div class="t">Email 1 · It's out</div>
+        <div class="m">List: All, excluding inactive (cold) who did not pre-save<br>November 21st, 2025 at 2:00pm ET</div>
+      </div>
+      <div class="esub"><div class="k">Subject</div><div class="v">i got cheated on while making this</div></div>
+      <div class="ebody">
+        <p>What is love?</p>
+        <p>Some say it's a feeling. Others say it's a sacrifice. Many don't believe in love...</p>
+        <p>And I don't blame them because for the longest time, I wasn't sure what love was or meant either...</p>
+        <p>My first girlfriend I thought I was gonna be with for life lasted 6 years and then she cut it off and broke my heart.</p>
+        <p>The second girl I gave my heart to cheated on me at a Halloween party...</p>
+        <p>But that third girl...</p>
+        <p>Turned out to be the love of my life. And I proposed to her the other day.</p>
+        <p>Both times I got my heart broken I made some music about it...</p>
+        <p>And I get thousands of messages every day saying that my music saved them.</p>
+        <p>I spent three years of my life creating for this moment.</p>
+        <p>This album is a true reflection of what love is.</p>
+        <p>And I hope you find healing and peace as I did while making them.</p>
+        <p>Listen to the Series of Love now by clicking here</p>
+        <p class="sig">Thank you for your support,<br>Multiszn</p>
+      </div>
+      <div class="emetrics">
+        <div class="met"><div class="k">Open rate</div><div class="v">22.0%</div><div class="bar"><span style="width:22%"></span></div></div>
+        <div class="met"><div class="k">CTR</div><div class="v">0.89%</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DELIVERABILITY -->
+<section id="deliverability" class="anchor">
+  <div class="wrap">
+    <div class="hbar" style="background:var(--violet)"></div>
+    <h2>The deliverability system</h2>
+    <p class="sub">How we make sure emails go to the primary inbox.</p>
+
+    <h3 style="margin-top:0">Fix the technical side</h3>
+    <p>We authenticated the domain and optimized the DNS settings using <a href="https://mxtoolbox.com/" target="_blank" rel="noopener">mxtoolbox.com</a>.</p>
+
+    <h3>Send when people actually read</h3>
+    <p>His audience opens at 12pm ET, 2pm ET, and 11pm ET, on Mondays, Thursdays, and Fridays. Most sends now go out inside those windows. Yours will be different. You only find that out by looking.</p>
+
+    <h3>Keep the list clean</h3>
+    <ul class="marks">
+      <li>Actively delete any user who bounces or unsubscribes.</li>
+      <li>Add the tag STATUS-INACTIVE to anyone on the cold side who does not engage.</li>
+    </ul>
+
+    <h3>The three segments</h3>
+    <div class="segments">
+      <div class="segbox">VIP segment. On the VIP list, an active subscriber, and engaged in the last 90 days.</div>
+      <div class="segbox">Warm segment. Active subscriber, engaged in the last 90 days, not on the VIP list.</div>
+      <div class="segbox">Cold segment. Active subscriber who has not engaged in the last 180 days.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="build" class="cta anchor">
+  <div class="wrap">
+    <h2>Time For You to Build Your Own Funnels</h2>
+    <p>If you're curious about building your email list, how to use emails, how to create your own direct to fans offers and get them to convert, etc. click the button below.</p>
+    <a class="btn" id="ctaFunnels" href="https://eliteartistsociety.com/" target="_blank" rel="noopener">Discover How To Build Your Own Funnels</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Elite Artist Society · All figures are reported as recorded during the campaign. Results described here are specific to this artist and this release, and are not a prediction of what any other artist will achieve.
+  </div>
+</footer>
+
+<script>
+(function(){
+  var bar=document.getElementById('prog');
+  function upd(){
+    var h=document.documentElement;
+    var max=h.scrollHeight-h.clientHeight;
+    bar.style.width=(max>0?(h.scrollTop||document.body.scrollTop)/max*100:0)+'%';
+  }
+  document.addEventListener('scroll',upd,{passive:true});
+  window.addEventListener('resize',upd);
+  upd();
+})();
+
+/* CTA click event. Sends to GA4 and Meta only when the tags actually loaded. */
+(function(){
+  var cta = document.getElementById('ctaFunnels');
+  if(!cta) return;
+  cta.addEventListener('click', function(){
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'cta_click', {
+        cta_id: 'case_study_multiszn',
+        link_url: cta.href
+      });
+    }
+    if (typeof window.fbq === 'function') {
+      window.fbq('trackCustom', 'CaseStudyCTAClick', { page: 'multiszn_case_study' });
+    }
+  });
+})();
+</script>
+</body>
+</html>
