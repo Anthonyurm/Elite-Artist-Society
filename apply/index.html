@@ -49,7 +49,26 @@ window.addEventListener('message',function(e){
       if(window.fbq) fbq('track','Lead');
       if(window.gtag) gtag('event','generate_lead',{event_category:'application'});
     }
-    setTimeout(function(){ window.location.href='/book/'; }, 500);
+    // Pull name and email out of the submission so Calendly can be prefilled
+    var name='', email='';
+    try{
+      var flds=(d.payload&&(d.payload.fields||d.payload.answers))||d.fields||[];
+      flds.forEach(function(f){
+        var label=((f.title||f.label||f.key||'')+'').toLowerCase();
+        var type=((f.type||'')+'').toUpperCase();
+        var val=(f.answer&&f.answer.value)!=null?f.answer.value:(f.value!=null?f.value:'');
+        if(Array.isArray(val)) val=val.join(' ');
+        val=(val+'').trim();
+        if(!val) return;
+        if(!email&&(type.indexOf('EMAIL')>-1||label.indexOf('email')>-1||/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(val))) email=val;
+        else if(!name&&(label.indexOf('name')>-1)) name=val;
+      });
+    }catch(err){}
+    var q=[];
+    if(name) q.push('name='+encodeURIComponent(name));
+    if(email) q.push('email='+encodeURIComponent(email));
+    var dest='/book/'+(q.length?'?'+q.join('&'):'');
+    setTimeout(function(){ window.location.href=dest; }, 500);
   }
 });
 </script>
