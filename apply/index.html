@@ -48,6 +48,15 @@ window.addEventListener('message',function(e){
     if(window.fbq) fbq('track','Lead');
     if(window.gtag) gtag('event','generate_lead',{event_category:'application'});
   }
+  if(ev==='calendly.event_scheduled'){
+    // Calendly cannot reliably redirect the parent page from inside the iframe
+    // (mobile browsers block it), so we do the redirect from out here.
+    if(window.__EAS_TRACK){
+      if(window.fbq) fbq('track','Schedule');
+      if(window.gtag) gtag('event','book_call',{event_category:'application'});
+    }
+    setTimeout(function(){ window.location.href='/scheduled/'; }, 800);
+  }
 });
 </script>
 
