@@ -38,24 +38,18 @@ gtag('js',new Date());
 gtag('config','G-DZWPXR1TV0');
 }
 </script>
-<!-- Lead event on application submit -->
+<!-- On submit: fire Lead, then move the whole page to the booking step -->
 <script>
 window.addEventListener('message',function(e){
   var d=e.data;
   try{ if(typeof d==='string') d=JSON.parse(d); }catch(err){ return; }
   var ev=d&&(d.event||(d.payload&&d.payload.event));
-  if(ev==='Tally.FormSubmitted'&&window.__EAS_TRACK){
-    if(window.fbq) fbq('track','Lead');
-    if(window.gtag) gtag('event','generate_lead',{event_category:'application'});
-  }
-  if(ev==='calendly.event_scheduled'){
-    // Calendly cannot reliably redirect the parent page from inside the iframe
-    // (mobile browsers block it), so we do the redirect from out here.
+  if(ev==='Tally.FormSubmitted'){
     if(window.__EAS_TRACK){
-      if(window.fbq) fbq('track','Schedule');
-      if(window.gtag) gtag('event','book_call',{event_category:'application'});
+      if(window.fbq) fbq('track','Lead');
+      if(window.gtag) gtag('event','generate_lead',{event_category:'application'});
     }
-    setTimeout(function(){ window.location.href='/scheduled/'; }, 800);
+    setTimeout(function(){ window.location.href='/book/'; }, 500);
   }
 });
 </script>
