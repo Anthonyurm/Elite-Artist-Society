@@ -1,1 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Book Your Call | Elite Artist Society</title>
+<meta name="description" content="Book your strategy call with the Elite Artist Society.">
+<meta name="theme-color" content="#09090b">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://eliteartistsociety.com/book/">
 
+<script>
+window.__EAS_TRACK = location.protocol.indexOf('http')===0 && !/localhost|127\./.test(location.hostname);
+</script>
+<!-- Meta Pixel -->
+<script>
+if(window.__EAS_TRACK){
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1730534501305028');
+fbq('track','PageView');
+}
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1730534501305028&ev=PageView&noscript=1"></noscript>
+<!-- Google Analytics 4 -->
+<script>
+if(window.__EAS_TRACK){
+var gs=document.createElement('script');gs.async=true;
+gs.src='https://www.googletagmanager.com/gtag/js?id=G-DZWPXR1TV0';
+document.head.appendChild(gs);
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+window.gtag=gtag;
+gtag('js',new Date());
+gtag('config','G-DZWPXR1TV0');
+}
+</script>
+<!-- Booking confirmation: fire conversion events, then send them to the scheduled page -->
+<script>
+window.addEventListener('message',function(e){
+  var d=e.data;
+  try{ if(typeof d==='string') d=JSON.parse(d); }catch(err){ return; }
+  var ev=d&&(d.event||(d.payload&&d.payload.event));
+  if(ev==='calendly.event_scheduled'){
+    if(window.__EAS_TRACK){
+      if(window.fbq) fbq('track','Schedule');
+      if(window.gtag) gtag('event','book_call',{event_category:'application'});
+    }
+    setTimeout(function(){ window.location.href='/scheduled/'; }, 900);
+  }
+});
+</script>
+
+<link rel="preconnect" href="https://assets.calendly.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#09090b;--border:rgba(255,255,255,.08);--text:#f4f4f5;--muted:#a1a1aa;--cobalt:#1E5BFF}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);font-family:Inter,sans-serif;min-height:100vh;display:flex;flex-direction:column}
+  header{display:flex;justify-content:center;padding:16px 20px;border-bottom:1px solid var(--border)}
+  header img{height:22px;width:auto;display:block}
+  main{flex:1;width:100%;max-width:1060px;margin:0 auto;padding:34px 16px 50px}
+  .intro{text-align:center;max-width:560px;margin:0 auto 26px}
+  .intro h1{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:clamp(1.5rem,4.5vw,2.1rem);letter-spacing:-.02em;line-height:1.1}
+  .intro h1 b{color:var(--cobalt)}
+  .intro p{color:var(--muted);margin-top:10px;font-size:.98rem}
+  .cal-wrap{border-radius:18px;overflow:hidden;border:1px solid var(--border);background:#fff}
+</style>
+</head>
+<body>
+<header>
+  <a href="/" aria-label="Elite Artist Society home"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMzUyOCA4MjAiIHJvbGU9ImltZyIgYXJpYS1sYWJlbD0iRWxpdGUgQXJ0aXN0IFNvY2lldHkiPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDYwLDc2MCkgc2NhbGUoMSwtMSkiPgogICAgPHBhdGggZD0iTTY2IDBWNzAwSDUxNlY1ODBIMTk4VjQxM0g0ODhWMjkzSDE5OFYxMjBINTIyVjBaTTYyMCAwVjcwMEg3NTJWMTIwSDEwNzJWMFpNMTE2MiAwVjcwMEgxMjk0VjBaTTE1ODggMFY1ODBIMTM4NFY3MDBIMTkyNFY1ODBIMTcyMFYwWk0yMDE0IDBWNzAwSDI0NjRWNTgwSDIxNDZWNDEzSDI0MzZWMjkzSDIxNDZWMTIwSDI0NzBWMFoiIGZpbGw9IiNGRkZGRkYiLz4KICAgIDxwYXRoIGQ9Ik0yODgwLjAgMCAzMTA5LjAgNzAwSDMyMjMuMEwzNDUyLjAgMEgzMzg1LjBMMzMyNS4wIDE4NkgzMDA3LjBMMjk0Ny4wIDBaTTMwMjUuMCAyNDRIMzMwNy4wTDMxNzIuMCA2NjJIMzE2MC4wWk0zNjQzLjAgMFY3MDBIMzkxNy4wUTM5ODIuMCA3MDAgNDAzMS41IDY3OC4wUTQwODEuMCA2NTYgNDEwOS41IDYxNC41UTQxMzguMCA1NzMgNDEzOC4wIDUxNFY1MDRRNDEzOC4wIDQzMyA0MTA0LjAgMzkyLjVRNDA3MC4wIDM1MiA0MDI0LjAgMzM5VjMyN1E0MDU5LjAgMzI2IDQwODMuMCAzMDUuMFE0MTA3LjAgMjg0IDQxMDcuMCAyMzhWMEg0MDQzLjBWMjMxUTQwNDMuMCAyNjMgNDAyNS41IDI4MC4wUTQwMDguMCAyOTcgMzk3My4wIDI5N0gzNzA3LjBWMFpNMzcwNy4wIDM1NUgzOTExLjBRMzk4OS4wIDM1NSA0MDMxLjUgMzkxLjVRNDA3NC4wIDQyOCA0MDc0LjAgNDk2VjUwMVE0MDc0LjAgNTY5IDQwMzIuNSA2MDUuNVEzOTkxLjAgNjQyIDM5MTEuMCA2NDJIMzcwNy4wWk00NTI3LjAgMFY2NDJINDI5My4wVjcwMEg0ODI1LjBWNjQySDQ1OTEuMFYwWk01MDE2LjAgMFY3MDBINTA4MC4wVjBaTTU1NTguMCAtMTRRNTQ4My4wIC0xNCA1NDI0LjAgMTIuNVE1MzY1LjAgMzkgNTMzMS4wIDkzLjVRNTI5Ny4wIDE0OCA1Mjk3LjAgMjMyVjI1MUg1MzYxLjBWMjMyUTUzNjEuMCAxMzUgNTQxNi41IDg4LjVRNTQ3Mi4wIDQyIDU1NTguMCA0MlE1NjQ1LjAgNDIgNTY5Mi4wIDgyLjVRNTczOS4wIDEyMyA1NzM5LjAgMTg2UTU3MzkuMCAyMjggNTcxOC41IDI1My41UTU2OTguMCAyNzkgNTY2MS41IDI5NC41UTU2MjUuMCAzMTAgNTU3Ny4wIDMyMkw1NTEzLjAgMzM4UTU0NTYuMCAzNTMgNTQxMS4wIDM3NS41UTUzNjYuMCAzOTggNTM0MC4wIDQzNC41UTUzMTQuMCA0NzEgNTMxNC4wIDUyOFE1MzE0LjAgNTg1IDUzNDMuNSA2MjcuMFE1MzczLjAgNjY5IDU0MjUuMCA2OTEuNVE1NDc3LjAgNzE0IDU1NDYuMCA3MTRRNTYxNS4wIDcxNCA1NjcwLjUgNjkwLjBRNTcyNi4wIDY2NiA1NzU4LjUgNjE5LjVRNTc5MS4wIDU3MyA1NzkxLjAgNTAzVjQ1Nkg1NzI3LjBWNTAzUTU3MjcuMCA1NTggNTcwMy4wIDU5Mi4wUTU2NzkuMCA2MjYgNTYzOC4wIDY0Mi4wUTU1OTcuMCA2NTggNTU0Ni4wIDY1OFE1NDczLjAgNjU4IDU0MjUuNSA2MjQuNVE1Mzc4LjAgNTkxIDUzNzguMCA1MjhRNTM3OC4wIDQ4NiA1Mzk3LjUgNDYxLjBRNTQxNy4wIDQzNiA1NDUyLjUgNDIxLjBRNTQ4OC4wIDQwNiA1NTM2LjAgMzk0TDU2MDAuMCAzNzhRNTY1NS4wIDM2NSA1NzAxLjAgMzQzLjVRNTc0Ny4wIDMyMiA1Nzc1LjAgMjg0LjVRNTgwMy4wIDI0NyA1ODAzLjAgMTg2UTU4MDMuMCAxMjUgNTc3Mi41IDgwLjBRNTc0Mi4wIDM1IDU2ODcuMCAxMC41UTU2MzIuMCAtMTQgNTU1OC4wIC0xNFpNNjE5OC4wIDBWNjQySDU5NjQuMFY3MDBINjQ5Ni4wVjY0Mkg2MjYyLjBWMFpNNzMwMC4wIC0xNFE3MjI1LjAgLTE0IDcxNjYuMCAxMi41UTcxMDcuMCAzOSA3MDczLjAgOTMuNVE3MDM5LjAgMTQ4IDcwMzkuMCAyMzJWMjUxSDcxMDMuMFYyMzJRNzEwMy4wIDEzNSA3MTU4LjUgODguNVE3MjE0LjAgNDIgNzMwMC4wIDQyUTczODcuMCA0MiA3NDM0LjAgODIuNVE3NDgxLjAgMTIzIDc0ODEuMCAxODZRNzQ4MS4wIDIyOCA3NDYwLjUgMjUzLjVRNzQ0MC4wIDI3OSA3NDAzLjUgMjk0LjVRNzM2Ny4wIDMxMCA3MzE5LjAgMzIyTDcyNTUuMCAzMzhRNzE5OC4wIDM1MyA3MTUzLjAgMzc1LjVRNzEwOC4wIDM5OCA3MDgyLjAgNDM0LjVRNzA1Ni4wIDQ3MSA3MDU2LjAgNTI4UTcwNTYuMCA1ODUgNzA4NS41IDYyNy4wUTcxMTUuMCA2NjkgNzE2Ny4wIDY5MS41UTcyMTkuMCA3MTQgNzI4OC4wIDcxNFE3MzU3LjAgNzE0IDc0MTIuNSA2OTAuMFE3NDY4LjAgNjY2IDc1MDAuNSA2MTkuNVE3NTMzLjAgNTczIDc1MzMuMCA1MDNWNDU2SDc0NjkuMFY1MDNRNzQ2OS4wIDU1OCA3NDQ1LjAgNTkyLjBRNzQyMS4wIDYyNiA3MzgwLjAgNjQyLjBRNzMzOS4wIDY1OCA3Mjg4LjAgNjU4UTcyMTUuMCA2NTggNzE2Ny41IDYyNC41UTcxMjAuMCA1OTEgNzEyMC4wIDUyOFE3MTIwLjAgNDg2IDcxMzkuNSA0NjEuMFE3MTU5LjAgNDM2IDcxOTQuNSA0MjEuMFE3MjMwLjAgNDA2IDcyNzguMCAzOTRMNzM0Mi4wIDM3OFE3Mzk3LjAgMzY1IDc0NDMuMCAzNDMuNVE3NDg5LjAgMzIyIDc1MTcuMCAyODQuNVE3NTQ1LjAgMjQ3IDc1NDUuMCAxODZRNzU0NS4wIDEyNSA3NTE0LjUgODAuMFE3NDg0LjAgMzUgNzQyOS4wIDEwLjVRNzM3NC4wIC0xNCA3MzAwLjAgLTE0Wk04MDExLjAgLTE0UTc4ODguMCAtMTQgNzgxNS4wIDU4LjVRNzc0Mi4wIDEzMSA3NzQyLjAgMjcxVjQyOVE3NzQyLjAgNTY5IDc4MTUuMCA2NDEuNVE3ODg4LjAgNzE0IDgwMTEuMCA3MTRRODEzNC4wIDcxNCA4MjA3LjAgNjQxLjVRODI4MC4wIDU2OSA4MjgwLjAgNDI5VjI3MVE4MjgwLjAgMTMxIDgyMDcuMCA1OC41UTgxMzQuMCAtMTQgODAxMS4wIC0xNFpNODAxMS4wIDQ0UTgxMDkuMCA0NCA4MTYyLjUgMTAzLjBRODIxNi4wIDE2MiA4MjE2LjAgMjY5VjQzMVE4MjE2LjAgNTM4IDgxNjIuNSA1OTcuMFE4MTA5LjAgNjU2IDgwMTEuMCA2NTZRNzkxNC4wIDY1NiA3ODYwLjAgNTk3LjBRNzgwNi4wIDUzOCA3ODA2LjAgNDMxVjI2OVE3ODA2LjAgMTYyIDc4NjAuMCAxMDMuMFE3OTE0LjAgNDQgODAxMS4wIDQ0Wk04NzU1LjAgLTE0UTg2MzIuMCAtMTQgODU1OC41IDU4LjVRODQ4NS4wIDEzMSA4NDg1LjAgMjcxVjQyOVE4NDg1LjAgNTY5IDg1NTguNSA2NDEuNVE4NjMyLjAgNzE0IDg3NTUuMCA3MTRRODg3Ny4wIDcxNCA4OTQxLjUgNjQ1LjVROTAwNi4wIDU3NyA5MDA2LjAgNDU5VjQ1NEg4OTQyLjBWNDYxUTg5NDIuMCA1NDcgODg5Ni41IDYwMS41UTg4NTEuMCA2NTYgODc1NS4wIDY1NlE4NjU4LjAgNjU2IDg2MDMuNSA1OTcuMFE4NTQ5LjAgNTM4IDg1NDkuMCA0MzFWMjY5UTg1NDkuMCAxNjIgODYwMy41IDEwMy4wUTg2NTguMCA0NCA4NzU1LjAgNDRRODg1MS4wIDQ0IDg4OTYuNSA5OC41UTg5NDIuMCAxNTMgODk0Mi4wIDIzOVYyNTRIOTAwNi4wVjI0MVE5MDA2LjAgMTIzIDg5NDEuNSA1NC41UTg4NzcuMCAtMTQgODc1NS4wIC0xNFpNOTIyNS4wIDBWNzAwSDkyODkuMFYwWk05NTM4LjAgMFY3MDBIOTk2MS4wVjY0Mkg5NjAyLjBWMzgwSDk5MzMuMFYzMjJIOTYwMi4wVjU4SDk5NjUuMFYwWk0xMDM1OC4wIDBWNjQySDEwMTI0LjBWNzAwSDEwNjU2LjBWNjQySDEwNDIyLjBWMFpNMTEwMzEuMCAwVjI3N0wxMDc3Ny4wIDcwMEgxMDg1My4wTDExMDU3LjAgMzUwSDExMDY5LjBMMTEyNzMuMCA3MDBIMTEzNDkuMEwxMTA5NS4wIDI3N1YwWiIgZmlsbD0iI0ZGRkZGRiIvPgogICAgPHBvbHlnb24gcG9pbnRzPSIxMTY1Mi4wLDcwMCAxMTY1Mi4wLDAgMTIxMDAuMCwzNTAuMCIgZmlsbD0iI0Y1OUUwQiIvPgogICAgPHBvbHlnb24gcG9pbnRzPSIxMjMwNi4wOCw3MDAgMTIzMDYuMDgsMCAxMjc1NC4wOCwzNTAuMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjRjU5RTBCIiBzdHJva2Utd2lkdGg9IjUyLjUiLz4KICAgIDxwb2x5Z29uIHBvaW50cz0iMTI5NjAuMTYsNzAwIDEyOTYwLjE2LDAgMTM0MDguMTYsMzUwLjAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0Y1OUUwQiIgc3Ryb2tlLXdpZHRoPSI1Mi41Ii8+CiAgPC9nPgo8L3N2Zz4=" alt="Elite Artist Society"></a>
+</header>
+<main>
+  <div class="intro">
+    <h1>Application accepted. <b>Last step,</b> book your strategy call</h1>
+    <p>Pick a day and time below that works for you.</p>
+  </div>
+  <div class="cal-wrap">
+    <!-- Calendly inline widget begin -->
+    <div class="calendly-inline-widget" data-url="https://calendly.com/eliteartistsociety/strategy-call?hide_gdpr_banner=1&text_color=020617&primary_color=1e5bff" style="min-width:320px;height:700px;"></div>
+    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+    <!-- Calendly inline widget end -->
+  </div>
+</main>
+</body>
+</html>
