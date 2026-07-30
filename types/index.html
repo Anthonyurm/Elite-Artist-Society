@@ -1,1 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Three Types of Music Content</title>
+<meta name="description" content="Every post on your profile has a job. Here are the three types of content every artist should be posting, with real examples of each.">
 
+<!-- Meta Pixel -->
+<script>
+if (location.hostname === 'eliteartistsociety.com' || location.hostname === 'www.eliteartistsociety.com') {
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+  document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1730534501305028');
+  fbq('track', 'PageView');
+}
+</script>
+
+<!-- GA4 -->
+<script>
+if (location.hostname === 'eliteartistsociety.com' || location.hostname === 'www.eliteartistsociety.com') {
+  var gs = document.createElement('script');
+  gs.async = true;
+  gs.src = 'https://www.googletagmanager.com/gtag/js?id=G-DZWPXR1TV0';
+  document.head.appendChild(gs);
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-DZWPXR1TV0');
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#050814;
+    --card:#0B1120;
+    --text:#F9FAFB;
+    --subtle:#9CA3AF;
+    --cobalt:#1E5BFF;
+    --cobalt-bright:#4D7CFF;
+    --violet:#7C3AED;
+    --violet-soft:#C4B5FD;
+    --mint:#22C55E;
+    --amber:#F59E0B;
+    --border:rgba(249,250,251,0.08);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    font-size:clamp(16px,1.5vw,18px);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{
+    max-width:840px;
+    margin:0 auto;
+    padding-left:clamp(20px,5vw,40px);
+    padding-right:clamp(20px,5vw,40px);
+  }
+  h1,h2,h3{font-family:'Space Grotesk',sans-serif;line-height:1.15;}
+
+  /* ---------- HERO ---------- */
+  .hero{padding-top:clamp(56px,10vw,110px);padding-bottom:clamp(40px,7vw,72px);}
+  .byline{
+    font-size:13px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;
+    color:var(--subtle);margin-bottom:clamp(20px,3vw,32px);
+  }
+  .hero h1{
+    font-size:clamp(34px,6.5vw,58px);
+    font-weight:700;
+    letter-spacing:-0.01em;
+    margin-bottom:clamp(18px,3vw,26px);
+  }
+  .hero h1 span{color:var(--cobalt-bright);}
+  .hero p{max-width:620px;color:var(--text);}
+  .hero .lede{margin-bottom:14px;}
+  .hero .sub{color:var(--subtle);}
+
+  /* ---------- CONTENTS ---------- */
+  .contents{padding-bottom:clamp(48px,8vw,80px);}
+  .contents-card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:clamp(22px,4vw,34px);
+  }
+  .contents-card h2{
+    font-size:14px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;
+    color:var(--subtle);margin-bottom:18px;
+  }
+  .contents-card ol{list-style:none;}
+  .contents-card li{border-top:1px solid var(--border);}
+  .contents-card li:first-child{border-top:none;}
+  .contents-card a{
+    display:flex;align-items:baseline;gap:16px;
+    padding:12px 4px;
+    color:var(--text);text-decoration:none;
+    font-family:'Space Grotesk',sans-serif;font-weight:600;
+    font-size:clamp(16px,2vw,19px);
+    transition:color .15s ease;
+  }
+  .contents-card a:hover{color:var(--cobalt-bright);}
+  .contents-card a .num{
+    font-size:13px;color:var(--cobalt-bright);font-weight:600;letter-spacing:0.06em;
+    min-width:26px;
+  }
+
+  /* ---------- SECTIONS ---------- */
+  section{padding-top:clamp(48px,8vw,88px);padding-bottom:clamp(24px,4vw,40px);}
+  .eyebrow{
+    display:inline-block;
+    font-family:'Space Grotesk',sans-serif;
+    font-size:13px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;
+    color:var(--cobalt-bright);
+    margin-bottom:14px;
+  }
+  section h2.title{
+    font-size:clamp(26px,4.5vw,40px);
+    font-weight:700;
+    margin-bottom:clamp(16px,2.5vw,22px);
+  }
+  .definition{
+    max-width:640px;
+    margin-bottom:clamp(28px,4vw,40px);
+  }
+  .definition strong{color:var(--cobalt-bright);font-weight:600;}
+
+  .examples-label{
+    font-size:13px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;
+    color:var(--subtle);
+    margin-bottom:18px;
+  }
+
+  /* ---------- VIDEO GRID ---------- */
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:clamp(14px,2.5vw,22px);
+  }
+  @media (max-width:720px){.grid{grid-template-columns:repeat(2,1fr);}}
+  .clip{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:12px;
+    overflow:hidden;
+  }
+  .clip-label{
+    padding:12px 14px;
+    font-family:'Space Grotesk',sans-serif;
+    font-size:clamp(13px,1.6vw,15px);
+    font-weight:600;
+    line-height:1.3;
+  }
+  .clip-media{
+    position:relative;
+    aspect-ratio:9/16;
+    background:#000;
+    cursor:pointer;
+  }
+  .clip-media video{
+    position:absolute;inset:0;
+    width:100%;height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .play-btn{
+    position:absolute;inset:0;
+    display:flex;align-items:center;justify-content:center;
+    background:rgba(5,8,20,0.25);
+    border:none;cursor:pointer;
+    transition:background .15s ease;
+    z-index:2;
+  }
+  .play-btn:hover{background:rgba(5,8,20,0.1);}
+  .play-btn:focus-visible{outline:2px solid var(--cobalt-bright);outline-offset:-2px;}
+  .play-btn svg{
+    width:52px;height:52px;
+    filter:drop-shadow(0 4px 12px rgba(0,0,0,0.5));
+    transition:transform .15s ease;
+  }
+  .play-btn:hover svg{transform:scale(1.08);}
+  .clip.playing .play-btn{display:none;}
+
+  /* ---------- MIX SECTION (60/30/10) ---------- */
+  .mix-card{
+    background:var(--card);
+    border:1px solid rgba(124,58,237,0.35);
+    border-radius:14px;
+    padding:clamp(24px,4vw,36px);
+    margin-top:clamp(24px,4vw,36px);
+  }
+  .mix-tag{
+    display:inline-block;
+    font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;
+    color:var(--violet-soft);
+    border:1px solid rgba(124,58,237,0.5);
+    border-radius:100px;
+    padding:5px 12px;
+    margin-bottom:20px;
+  }
+  .mix-rows{display:flex;flex-direction:column;gap:18px;margin-bottom:22px;}
+  .mix-row{display:flex;align-items:baseline;gap:16px;}
+  .mix-row .pct{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:clamp(26px,4vw,36px);
+    font-weight:700;
+    color:var(--cobalt-bright);
+    min-width:86px;
+  }
+  .mix-row .what{font-weight:600;}
+  .mix-row .why{color:var(--subtle);font-size:0.94em;}
+  .mix-card .note{color:var(--subtle);max-width:600px;}
+
+  /* ---------- CTA ---------- */
+  .cta{
+    padding-top:clamp(56px,9vw,100px);
+    padding-bottom:clamp(72px,11vw,130px);
+    text-align:center;
+  }
+  .cta h2{
+    font-size:clamp(24px,4.2vw,36px);
+    font-weight:700;
+    max-width:640px;
+    margin:0 auto clamp(26px,4vw,36px);
+  }
+  .cta-btn{
+    display:inline-block;
+    font-family:'Space Grotesk',sans-serif;
+    font-size:clamp(17px,2.2vw,20px);
+    font-weight:700;
+    color:#fff;
+    background:var(--cobalt);
+    text-decoration:none;
+    padding:18px 52px;
+    border-radius:12px;
+    transition:background .15s ease,transform .15s ease;
+  }
+  .cta-btn:hover{background:var(--cobalt-bright);transform:translateY(-2px);}
+  .cta-btn:focus-visible{outline:2px solid #fff;outline-offset:3px;}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    border-top:1px solid var(--border);
+    padding-top:clamp(24px,4vw,36px);
+    padding-bottom:clamp(40px,6vw,60px);
+    color:var(--subtle);
+    font-size:14px;
+    text-align:center;
+  }
+
+  hr.rule{
+    border:none;border-top:1px solid var(--border);
+    margin-top:clamp(32px,5vw,56px);
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    .cta-btn,.play-btn svg{transition:none;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="byline">By The Elite Artist Society</div>
+    <h1>The Three Types of <span>Music Content</span></h1>
+    <p class="lede">Every post on your profile has a job. Most artists only post one type of content, then wonder why views never turn into real fans.</p>
+    <p class="sub">Below is each type broken down with real examples pulled from artists using them right now. Watch the clips, study why they work, then recreate the structure in your own way. Steal like an artist, don't copy.</p>
+  </div>
+</header>
+
+<div class="contents">
+  <div class="wrap">
+    <div class="contents-card">
+      <h2>Contents</h2>
+      <ol>
+        <li><a href="#top"><span class="num">01</span>Top of Funnel Content</a></li>
+        <li><a href="#middle"><span class="num">02</span>Middle of Funnel Content</a></li>
+        <li><a href="#bottom"><span class="num">03</span>Bottom of Funnel Content</a></li>
+        <li><a href="#mix"><span class="num">04</span>How to Mix All Three</a></li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<section id="top">
+  <div class="wrap">
+    <div class="eyebrow">01 · Attract</div>
+    <h2 class="title">Top of Funnel Content</h2>
+    <p class="definition">To <strong>attract</strong> large broad audiences to your profile by speaking to their identity, interests, or values.</p>
+    <div class="examples-label">Common Examples</div>
+    <div class="grid">
+      <div class="clip">
+        <div class="clip-label">Performance hooks</div>
+        <div class="clip-media">
+          <video preload="none" poster="posters/top-performance-hooks.jpg" playsinline>
+            <source src="videos/top-performance-hooks.mp4" type="video/mp4">
+          </video>
+          <button class="play-btn" aria-label="Play example: performance hooks">
+            <svg viewBox="0 0 52 52" fill="none"><circle cx="26" cy="26" r="25" fill="#1E5BFF"/><path d="M21 17.5v17l14-8.5-14-8.5z" fill="#fff"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="clip">
+        <div class="clip-label">Text story clips</div>
+        <div class="clip-media">
+          <video preload="none" poster="posters/top-text-story-clips.jpg" playsinline>
+            <source src="videos/top-text-story-clips.mp4" type="video/mp4">
+          </video>
+          <button class="play-btn" aria-label="Play example: text story clips">
+            <svg viewBox="0 0 52 52" fill="none"><circle cx="26" cy="26" r="25" fill="#1E5BFF"/><path d="M21 17.5v17l14-8.5-14-8.5z" fill="#fff"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="clip">
+        <div class="clip-label">Low to high quality transition clips</div>
+        <div class="clip-media">
+          <video preload="none" poster="posters/top-transition-clips.jpg" playsinline>
+            <source src="videos/top-transition-clips.mp4" type="video/mp4">
+          </video>
+          <button class="play-btn" aria-label="Play example: low to high quality transition clips">
+            <svg viewBox="0 0 52 52" fill="none"><circle cx="26" cy="26" r="25" fill="#1E5BFF"/><path d="M21 17.5v17l14-8.5-14-8.5z" fill="#fff"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="clip">
+        <div class="clip-label">B roll clips</div>
+        <div class="clip-media">
+          <video preload="none" poster="posters/top-b-roll-clips.jpg" playsinline>
+            <source src="videos/top-b-roll-clips.mp4" type="video/mp4">
+          </video>
+          <button class="play-btn" aria-label="Play example: B roll clips">
+            <svg viewBox="0 0 52 52" fill="none"><circle cx="26" cy="26" r="25" fill="#1E5BFF"/><path d="M21 17.5v17l14-8.5-14-8.5z" fill="#fff"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="clip">
+        <div class="clip-label">Covers</div>
+        <div class="clip-media">
+          <video preload="none" poster="posters/top-covers.jpg" playsinline>
+            <source src="videos/top-covers.mp4" type="video/mp4">
+          </video>
+          <button class="play-btn" aria-label="Play example: covers">
+            <svg viewBox="0 0 52 52" fill="none"><circle cx="26" cy="26" r="25" fill="#1E5BFF"/><path d="M21 17.5v17l14-8.5-14-8.5z" fill="#fff"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="clip">
+        <div class="clip-label">Meme/game clips (think alt account)</div>
+        <div class="clip-media">
+          <video preload="none" poster="posters/top-meme-game-clips.jpg" playsinline>
+            <source src="videos/top-meme-game-clips.mp4" type="video/mp4">
+          </video>
+          <button class="play-btn" aria-label="Play example: meme and game clips">
+            <svg viewBox="0 0 52 52" fill="none"><circle cx="26" cy="26" r="25" fill="#1E5BFF"/><path d="M21 17.5v17l14-8.5-14-8.5z" fill="#fff"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <hr class="rule">
+  </div>
+</section>
+
+<section id="middle">
+  <div class="wrap">
+    <div class="eyebrow">02 · Nurture</div>
+    <h2 class="title">Middle of Funnel Content</h2>
+    <p class="definition">To <strong>nurture</strong> new followers by sharing personal stories, BTS content, and community moments that build trust and relatability.</p>
+    <div class="examples-label">Common Examples</div>
+    <div class="grid">
+      <div class="clip">
+        <div class="clip-label">BTS studio session moments</div>
+        <div class="clip-media">
+          <video preload="none" poster="posters/mid-bts-studio.jpg" playsinline>
+            <source src="videos/mid-bts-studio.mp4" type="video/mp4">
+          </video>
+          <button class="play-btn" aria-label="Play example: BTS studio session moments">
+            <svg viewBox="0 0 52 52" fill="none"><circle cx="26" cy="26" r="25" fill="#1E5BFF"/><path d="M21 17.5v17l14-8.5-14-8.5z" fill="#fff"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="clip">
+        <div class="clip-label">Live performance clips</div>
+        <div class="clip-media">
+          <video preload="none" poster="posters/mid-live-performance.jpg" playsinline>
+            <source src="videos/mid-live-performance.mp4" type="video/mp4">
+          </video>
+          <button class="play-btn" aria-label="Play example: live performance clips">
+            <svg viewBox="0 0 52 52" fill="none"><circle cx="26" cy="26" r="25" fill="#1E5BFF"/><path d="M21 17.5v17l14-8.5-14-8.5z" fill="#fff"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="clip">
+        <div class="clip-label">Fan moments</div>
+        <div class="clip-media">
+          <video preload="none" poster="posters/mid-fan-moments.jpg" playsinline>
+            <source src="videos/mid-fan-moments.mp4" type="video/mp4">
+          </video>
+          <button class="play-btn" aria-label="Play example: fan moments">
+            <svg viewBox="0 0 52 52" fill="none"><circle cx="26" cy="26" r="25" fill="#1E5BFF"/><path d="M21 17.5v17l14-8.5-14-8.5z" fill="#fff"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="clip">
+        <div class="clip-label">Community events</div>
+        <div class="clip-media">
+          <video preload="none" poster="posters/mid-community-events.jpg" playsinline>
+            <source src="videos/mid-community-events.mp4" type="video/mp4">
+          </video>
+          <button class="play-btn" aria-label="Play example: community events">
+            <svg viewBox="0 0 52 52" fill="none"><circle cx="26" cy="26" r="25" fill="#1E5BFF"/><path d="M21 17.5v17l14-8.5-14-8.5z" fill="#fff"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="clip">
+        <div class="clip-label">Storytelling</div>
+        <div class="clip-media">
+          <video preload="none" poster="posters/mid-storytelling.jpg" playsinline>
+            <source src="videos/mid-storytelling.mp4" type="video/mp4">
+          </video>
+          <button class="play-btn" aria-label="Play example: storytelling">
+            <svg viewBox="0 0 52 52" fill="none"><circle cx="26" cy="26" r="25" fill="#1E5BFF"/><path d="M21 17.5v17l14-8.5-14-8.5z" fill="#fff"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <hr class="rule">
+  </div>
+</section>
+
+<section id="bottom">
+  <div class="wrap">
+    <div class="eyebrow">03 · Convert</div>
+    <h2 class="title">Bottom of Funnel Content</h2>
+    <p class="definition">To <strong>convert</strong> your fans into customers by offering content or experiences to them.</p>
+    <div class="examples-label">Common Examples</div>
+    <div class="grid">
+      <div class="clip">
+        <div class="clip-label">Show/tour announcement videos</div>
+        <div class="clip-media">
+          <video preload="none" poster="posters/bottom-show-announcement.jpg" playsinline>
+            <source src="videos/bottom-show-announcement.mp4" type="video/mp4">
+          </video>
+          <button class="play-btn" aria-label="Play example: show and tour announcement videos">
+            <svg viewBox="0 0 52 52" fill="none"><circle cx="26" cy="26" r="25" fill="#1E5BFF"/><path d="M21 17.5v17l14-8.5-14-8.5z" fill="#fff"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="clip">
+        <div class="clip-label">Merch drops or giveaways</div>
+        <div class="clip-media">
+          <video preload="none" poster="posters/bottom-merch-giveaways.jpg" playsinline>
+            <source src="videos/bottom-merch-giveaways.mp4" type="video/mp4">
+          </video>
+          <button class="play-btn" aria-label="Play example: merch drops or giveaways">
+            <svg viewBox="0 0 52 52" fill="none"><circle cx="26" cy="26" r="25" fill="#1E5BFF"/><path d="M21 17.5v17l14-8.5-14-8.5z" fill="#fff"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="clip">
+        <div class="clip-label">Direct CTA content</div>
+        <div class="clip-media">
+          <video preload="none" poster="posters/bottom-direct-cta.jpg" playsinline>
+            <source src="videos/bottom-direct-cta.mp4" type="video/mp4">
+          </video>
+          <button class="play-btn" aria-label="Play example: direct CTA content">
+            <svg viewBox="0 0 52 52" fill="none"><circle cx="26" cy="26" r="25" fill="#1E5BFF"/><path d="M21 17.5v17l14-8.5-14-8.5z" fill="#fff"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="mix">
+  <div class="wrap">
+    <div class="eyebrow">04</div>
+    <h2 class="title">How to Mix All Three</h2>
+    <p class="definition">Posting only one type of content is why most profiles stall. All top of funnel gets you views from people who never become fans. All bottom of funnel makes your profile feel like a billboard. The fix is a deliberate mix.</p>
+    <div class="mix-card">
+      <div class="mix-tag">The 60/30/10 Split</div>
+      <div class="mix-rows">
+        <div class="mix-row">
+          <span class="pct">60%</span>
+          <span><span class="what">Top of funnel.</span> <span class="why">Keep new eyes coming in.</span></span>
+        </div>
+        <div class="mix-row">
+          <span class="pct">30%</span>
+          <span><span class="what">Middle of funnel.</span> <span class="why">Turn those new eyes into people who care about you.</span></span>
+        </div>
+        <div class="mix-row">
+          <span class="pct">10%</span>
+          <span><span class="what">Bottom of funnel.</span> <span class="why">Give the people who care a specific action to take.</span></span>
+        </div>
+      </div>
+      <p class="note">Go look at your profile right now. If your last 10 posts are all one type, you found the reason your attention isn't converting.</p>
+    </div>
+  </div>
+</section>
+
+<div class="cta">
+  <div class="wrap">
+    <h2>Want a more in depth look at how artists are building their communities with content?</h2>
+    <a class="cta-btn" href="https://eliteartistsociety.com/">Click Here</a>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    Elite Artist Society · Example clips are shown for education and reference. Study the structure, then make it your own.
+  </div>
+</footer>
+
+<script>
+(function(){
+  var medias = document.querySelectorAll('.clip-media');
+  var videos = document.querySelectorAll('.clip-media video');
+
+  function pauseOthers(current){
+    videos.forEach(function(v){
+      if (v !== current && !v.paused){
+        v.pause();
+        v.closest('.clip').classList.remove('playing');
+        v.controls = false;
+      }
+    });
+  }
+
+  medias.forEach(function(media){
+    var video = media.querySelector('video');
+    var btn = media.querySelector('.play-btn');
+
+    btn.addEventListener('click', function(){
+      pauseOthers(video);
+      video.controls = true;
+      media.closest('.clip').classList.add('playing');
+      video.play();
+    });
+
+    video.addEventListener('play', function(){ pauseOthers(video); });
+
+    video.addEventListener('ended', function(){
+      media.closest('.clip').classList.remove('playing');
+      video.controls = false;
+      video.currentTime = 0;
+    });
+  });
+
+  // Pause videos that scroll out of view
+  if ('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        var v = entry.target.querySelector('video');
+        if (!entry.isIntersecting && v && !v.paused){
+          v.pause();
+        }
+      });
+    }, {threshold: 0.1});
+    medias.forEach(function(m){ io.observe(m); });
+  }
+})();
+</script>
+
+</body>
+</html>
