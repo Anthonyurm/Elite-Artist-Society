@@ -63,6 +63,33 @@
   }
   footer a{margin-right:18px}
 </style>
+<script>
+(function () {
+  try {
+    var KEY = "eas_ig", DAYS = 30, ENDPOINT = "https://app.eliteartistsociety.com/api/owner/ingest/visit";
+    var now = Date.now();
+    var fromLink = new URLSearchParams(location.search).get("ig");
+    var stored = null;
+    try { stored = JSON.parse(localStorage.getItem(KEY) || "null"); } catch (e) {}
+    if (fromLink && /^@?[A-Za-z0-9._]{1,60}$/.test(fromLink)) {
+      stored = { ig: fromLink.replace(/^@/, "").toLowerCase(), at: now, sent: {} };
+    }
+    if (!stored || !stored.ig || now - stored.at > DAYS * 86400000) return;
+    var path = location.pathname || "/";
+    var day = new Date().toISOString().slice(0, 10);
+    stored.sent = stored.sent || {};
+    if (stored.sent[path] === day) { localStorage.setItem(KEY, JSON.stringify(stored)); return; }
+    stored.sent[path] = day;
+    localStorage.setItem(KEY, JSON.stringify(stored));
+    var body = JSON.stringify({ ig: stored.ig, path: path, ref: document.referrer || null });
+    if (navigator.sendBeacon) {
+      navigator.sendBeacon(ENDPOINT, new Blob([body], { type: "text/plain" }));
+    } else {
+      fetch(ENDPOINT, { method: "POST", body: body, headers: { "content-type": "text/plain" }, keepalive: true, mode: "cors" }).catch(function () {});
+    }
+  } catch (e) {}
+})();
+</script>
 </head>
 <body>
 <div class="wrap">
