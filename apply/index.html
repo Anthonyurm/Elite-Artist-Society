@@ -38,7 +38,9 @@ gtag('js',new Date());
 gtag('config','G-DZWPXR1TV0');
 }
 </script>
-<!-- On submit: fire Lead, then move the whole page to the booking step -->
+<!-- On submit: Tally sends the applicant to /book/ (qualified) or /resources/ (turned away).
+     No Meta Lead here: /book/ fires it, so only qualified applicants count as Leads
+     (Anthony, November 25th 2026: Jeremy's rule, Lead only for qualified people). -->
 <script>
 window.addEventListener('message',function(e){
   var d=e.data;
@@ -46,7 +48,6 @@ window.addEventListener('message',function(e){
   var ev=d&&(d.event||(d.payload&&d.payload.event));
   if(ev==='Tally.FormSubmitted'){
     if(window.__EAS_TRACK){
-      if(window.fbq) fbq('track','Lead');
       if(window.gtag) gtag('event','generate_lead',{event_category:'application'});
     }
     // Pull name and email out of the submission so Calendly can be prefilled
@@ -68,7 +69,9 @@ window.addEventListener('message',function(e){
     if(name) q.push('name='+encodeURIComponent(name));
     if(email) q.push('email='+encodeURIComponent(email));
     var dest='/book/'+(q.length?'?'+q.join('&'):'');
-    setTimeout(function(){ window.location.href=dest; }, 500);
+    // Backup only: Tally's own redirect (to /book/ or /resources/) normally wins.
+    // Waiting 3 seconds keeps this from sending a turned away applicant to booking.
+    setTimeout(function(){ window.location.href=dest; }, 3000);
   }
 });
 </script>
