@@ -11,8 +11,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#050814; --card:#0B1120; --border:#1C2740; --text:#F9FAFB;
-    --muted:#9AA4B8; --cobalt:#1E5BFF; --cobalt-lt:#4D7CFF; --amber:#F59E0B;
+    --bg:#0b090c; --card:#181619; --border:#2c292d; --text:#f6f3f6;
+    --muted:#b0a7b0; --cobalt:#ff5fa8; --cobalt-lt:#ff8fc2; --amber:#ff8fc2;
   }
   *{box-sizing:border-box}
   html,body{margin:0;padding:0}
@@ -41,8 +41,8 @@
     font-family:'Space Grotesk',sans-serif;font-weight:500;
     font-size:17px;margin:26px 0 8px;color:var(--cobalt-lt)
   }
-  p{margin:0 0 16px;color:#D7DCE8}
-  ul{margin:0 0 16px;padding-left:22px;color:#D7DCE8}
+  p{margin:0 0 16px;color:#e6dfe6}
+  ul{margin:0 0 16px;padding-left:22px;color:#e6dfe6}
   li{margin:0 0 8px}
   strong{color:var(--text);font-weight:600}
   a{color:var(--cobalt-lt);text-decoration:underline;text-underline-offset:3px}
@@ -56,7 +56,7 @@
   th,td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--border);vertical-align:top}
   th{font-family:'Space Grotesk',sans-serif;font-weight:500;color:var(--text);font-size:13px;
      letter-spacing:.06em;text-transform:uppercase}
-  td{color:#D7DCE8}
+  td{color:#e6dfe6}
   footer{
     border-top:1px solid var(--border);padding:28px 0 60px;margin-top:48px;
     color:var(--muted);font-size:14px
@@ -90,6 +90,13 @@
   } catch (e) {}
 })();
 </script>
+<style id="pink-glass">
+html{color-scheme:dark}
+body{background:radial-gradient(800px 460px at 60% -110px,rgba(255,70,150,.2),transparent 60%),#0b090c;background-attachment:fixed}
+@supports ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){
+.card{background:rgba(255,255,255,.055);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border-color:rgba(255,255,255,.13);box-shadow:inset 0 1px 0 rgba(255,255,255,.1)}
+}
+</style>
 </head>
 <body>
 <div class="wrap">

@@ -43,19 +43,19 @@
 
 <style id="page-css">
 :root{
-  --cobalt:#1E5BFF;
-  --violet:#7C3AED;
-  --amber:#F59E0B;
-  --mint:#22C55E;
-  --ink:#050814;
-  --ink-elev:#0B1120;
-  --paper:#F9FAFB;
-  --card:#FFFFFF;
-  --line:#E5E7EB;
-  --text:#020617;
-  --text-sub:#6B7280;
-  --text-light:#F9FAFB;
-  --text-light-sub:#9CA3AF;
+  --cobalt:#ff5fa8;
+  --violet:#ff8fc2;
+  --amber:#ff8fc2;
+  --mint:#ff8fc2;
+  --ink:#181619;
+  --ink-elev:#252226;
+  --paper:#0b090c;
+  --card:#181619;
+  --line:#2c292d;
+  --text:#f6f3f6;
+  --text-sub:#b0a7b0;
+  --text-light:#f6f3f6;
+  --text-light-sub:#b0a7b0;
   --col:760px;
   --wide:1040px;
 }
@@ -191,10 +191,10 @@ ul.marks.violet li:before{background:var(--violet);}
   display:inline-block;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
   padding:4px 9px;border-radius:4px;margin-bottom:12px;
 }
-.chip.amber{background:rgba(245,158,11,.12);color:#B45309;}
-.chip.violet{background:rgba(124,58,237,.10);color:var(--violet);}
-.chip.mint{background:rgba(34,197,94,.12);color:#15803D;}
-.chip.cobalt{background:rgba(30,91,255,.10);color:var(--cobalt);}
+.chip.amber{background:rgba(255,143,194,.12);color:#B45309;}
+.chip.violet{background:rgba(255,95,168,.10);color:var(--violet);}
+.chip.mint{background:rgba(255,143,194,.12);color:#15803D;}
+.chip.cobalt{background:rgba(255,95,168,.10);color:var(--cobalt);}
 .prob h3{margin:0 0 10px;font-size:19px;}
 .prob p:last-child{margin-bottom:0;}
 
@@ -313,7 +313,7 @@ footer .wrap{max-width:var(--col);}
 .shot{margin:24px 0;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px;}
 .shot img{display:block;width:100%;height:auto;border-radius:6px;}
 .shot figcaption{font-size:13px;color:var(--text-sub);padding:10px 4px 2px;line-height:1.5;}
-.shot.proof{border-color:rgba(34,197,94,.45);}
+.shot.proof{border-color:rgba(255,143,194,.45);}
 .dark .shot,.cta .shot{background:var(--ink-elev);border-color:rgba(255,255,255,.12);}
 section .wrap > ol{padding-left:22px;margin:0 0 18px;}
 section .wrap > ol li{margin-bottom:10px;}
@@ -322,7 +322,7 @@ section .wrap > ol li{margin-bottom:10px;}
 .shot{margin:24px 0;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px;}
 .shot img{display:block;width:100%;height:auto;border-radius:6px;}
 .shot figcaption{font-size:13px;color:var(--text-sub);padding:10px 4px 2px;line-height:1.5;}
-.shot.proof{border-color:rgba(34,197,94,.45);}
+.shot.proof{border-color:rgba(255,143,194,.45);}
 .dark .shot,.cta .shot{background:var(--ink-elev);border-color:rgba(255,255,255,.12);}
 section .wrap > ol{padding-left:22px;margin:0 0 18px;}
 section .wrap > ol li{margin-bottom:10px;}
@@ -355,6 +355,20 @@ section .wrap > ol li{margin-bottom:10px;}
   } catch (e) {}
 })();
 </script>
+<style id="pink-glass">
+html{color-scheme:dark}
+body{background:radial-gradient(800px 460px at 60% -110px,rgba(255,70,150,.2),transparent 60%),#0b090c;background-attachment:fixed}
+.btn{color:#1a0810}
+@supports ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){
+.stat,
+.linkcard,
+.prob,
+.email,
+.segbox,
+.shot,
+.dark .shot,.cta .shot{background:rgba(255,255,255,.055);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border-color:rgba(255,255,255,.13);box-shadow:inset 0 1px 0 rgba(255,255,255,.1)}
+}
+</style>
 </head>
 <body><div id="prog"></div><header class="cover">
   <div class="wrap wide">

@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{--ink:#21201c;--ash:#63635e;--rule:#e2e1de;--panel:#fff;--ground:#f3f3f2;--cobalt:#1e5bff}
+  :root{--ink:#f6f3f6;--ash:#b0a7b0;--rule:#2c292d;--panel:#181619;--ground:#0b090c;--cobalt:#ff5fa8}
   *{box-sizing:border-box;margin:0;padding:0}
   body{background:var(--ground);color:var(--ink);
        font:400 16px/1.65 Inter,system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
@@ -57,6 +57,13 @@
   } catch (e) {}
 })();
 </script>
+<style id="pink-glass">
+html{color-scheme:dark}
+body{background:radial-gradient(800px 460px at 60% -110px,rgba(255,70,150,.2),transparent 60%),#0b090c;background-attachment:fixed}
+@supports ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){
+.card{background:rgba(255,255,255,.055);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border-color:rgba(255,255,255,.13);box-shadow:inset 0 1px 0 rgba(255,255,255,.1)}
+}
+</style>
 </head>
 <body>
 <div class="wrap">
