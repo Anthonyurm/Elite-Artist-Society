@@ -97,8 +97,9 @@ gtag('config','G-DZWPXR1TV0');
 </header>
 <main>
   <div class="intro">
-    <h1 id="hello">Thanks for Applying</h1>
-    <p>Based on your answers, the best move for you right now is building up your foundation first. Everything on this page is free, and it's the same stuff I teach the artists I work with to put you in the best position possible.</p>
+    <!-- Anthony's words, November 28th 2026: the page anyone can be sent to. -->
+    <h1 id="hello">Free Playbooks for Artists</h1>
+    <p id="intro">Everything on this page is free, and it's the same stuff I teach the artists I work with one on one inside the Elite Artist Society.</p>
   </div>
   <section>
     <h2>Find Your True Fan (target audience)</h2>
@@ -121,12 +122,24 @@ gtag('config','G-DZWPXR1TV0');
   </section>
 </main>
 <script>
-// Greet by first name when the application passes ?name=
+// TWO VERSIONS OF THE TOP (Anthony, November 28th 2026: "Yes, Only for
+// Them"). Someone the application turned away arrives with ?email= (only
+// Tally's redirect carries it) and reads the Thanks for Applying words.
+// Everyone else (the quiz, a DM, a shared link) reads the general words
+// in the page itself, with their first name when the link has ?name=.
 (function(){
   try{
-    var n=(new URLSearchParams(location.search).get('name')||'').trim().split(/\s+/)[0]||'';
+    var q=new URLSearchParams(location.search);
+    var n=(q.get('name')||'').trim().split(/\s+/)[0]||'';
     n=n.replace(/[^\p{L}\p{M}'.-]/gu,'').slice(0,40);
-    if(n) document.getElementById('hello').textContent='Thanks for Applying, '+n.charAt(0).toUpperCase()+n.slice(1);
+    if(n) n=n.charAt(0).toUpperCase()+n.slice(1);
+    var h=document.getElementById('hello');
+    if((q.get('email')||'').trim()){
+      h.textContent=n?'Thanks for Applying, '+n:'Thanks for Applying';
+      document.getElementById('intro').textContent="Based on your answers, the best move for you right now is building up your foundation first. Everything on this page is free, and it's the same stuff I teach the artists I work with to put you in the best position possible.";
+    }else if(n){
+      h.textContent='Free Trainings for You, '+n;
+    }
   }catch(e){}
 })();
 </script>
